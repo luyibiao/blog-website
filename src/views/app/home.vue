@@ -1,25 +1,20 @@
 <template>
   <div id="home" class="blog-app_home">
-    <div class="home-big_box">
-      <img src="~@/assets/imgs/home.jpg" alt="" class="home-big_img"/>
-    </div>
     <!--头部-->
     <my-header />
 
     <!--主体内容-->
     <div class="my-router">
-      <my-router/>
+      <my-router class="my-route-wraper"/>
+      <my-silder class="my-silder"/>
     </div>
-    
-    <!--底部-->
-    <my-footer />
   </div>
 </template>
 
 <script>
 import myHeader from './header.vue';
 import myRouter from './router';
-import myFooter from './footer'
+import mySilder from './silder'
 export default {
   name: 'home',
   data(){
@@ -32,7 +27,7 @@ export default {
   components: {
     myHeader,
     myRouter,
-    myFooter
+    mySilder
   },
   watch: {
     
@@ -40,19 +35,22 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .blog-app_home {
-  display: flex;
-  flex-direction: column;
   height: 100%;
-  .home-big_box {
-    .home-big_img {
-      width: 100%;
-      max-height: 200px;
-    }
-  }
   .my-router {
-    flex: 1;
+    min-height: 100%;
+    width: 80%;
+    margin: 10px auto 0;
+    display: flex;
+    .my-route-wraper {
+      width: 60%;
+    }
+    .my-silder {
+      flex: 1;
+      margin-left: 20px;
+    }
+    // font-size: ;
   }
 }
 </style>

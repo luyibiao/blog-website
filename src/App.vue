@@ -20,14 +20,14 @@ export default {
 
 #app{
   position: relative;
-  background: $main-white;
-  min-width: 1024px !important;
+  // background: $main-white;
+  min-width: 1249px !important;
   max-width: 1920px !important;
   padding: 0 5px;
   box-sizing: border-box;
   min-height: 100%;
   margin: 0 auto;
-  background: #fff;
   height: 100%;
+  color: $main-black;
 }
 </style>
