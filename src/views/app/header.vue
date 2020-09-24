@@ -28,6 +28,8 @@
 
 <script>
 export default {
+  components: {
+  },
   data() {
     return {
       currentValue: '',
@@ -77,15 +79,16 @@ export default {
 <style lang="scss">
 .home-header {
   margin-top: -2px;
+  // background: #fff;
   .blog-app_home-logo {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-    width: 80%;
+    width: 1200px;
     margin: 0 auto;
     .blog-app_home-logo-inner {
       display: block;
-      width: 350px;
+      width: 320px;
     }
     .blog-app_home-logo-text {
       margin: 20px 0 0 0px;
@@ -136,7 +139,7 @@ export default {
     margin-top: 30px;
     background: #333;
     .home-header_nav-wraper {
-      width: 80%;
+      width: 1200px;
       margin: auto;
       display: flex;
       .home-header_nav-item {

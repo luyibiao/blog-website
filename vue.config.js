@@ -5,5 +5,13 @@ module.exports = {
         prependData: `@import "~@/assets/scss/variable.scss";`
       }
     }
-  }
+  },
+  devServer: {
+    overlay: {
+      warnings: true,
+      errors: true
+    }
+  },
+
+  lintOnSave: false
 }

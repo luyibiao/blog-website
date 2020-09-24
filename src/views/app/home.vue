@@ -6,7 +6,6 @@
     <!--主体内容-->
     <div class="my-router">
       <my-router class="my-route-wraper"/>
-      <my-silder class="my-silder"/>
     </div>
   </div>
 </template>
@@ -15,11 +14,12 @@
 import myHeader from './header.vue';
 import myRouter from './router';
 import mySilder from './silder'
+import sideColumn from '@/components/sideColumn'
+
 export default {
   name: 'home',
   data(){
     return{
-     
     }
   },
   methods: {
@@ -27,7 +27,8 @@ export default {
   components: {
     myHeader,
     myRouter,
-    mySilder
+    mySilder,
+    
   },
   watch: {
     
@@ -35,22 +36,19 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .blog-app_home {
-  height: 100%;
+  min-height: 100%;
+  
   .my-router {
-    min-height: 100%;
-    width: 80%;
+    // min-height: 100%;
+    width: 1200px;
     margin: 10px auto 0;
-    display: flex;
+    padding-bottom: 170px;
     .my-route-wraper {
-      width: 60%;
+      display: block;
+      width: 100%;
     }
-    .my-silder {
-      flex: 1;
-      margin-left: 20px;
-    }
-    // font-size: ;
   }
 }
 </style>

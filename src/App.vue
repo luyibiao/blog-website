@@ -1,15 +1,38 @@
 <template>
   <div id="app">
-    <my-home></my-home>
+    <my-home class="app-home"></my-home>
+    <div class="particles" ref="particles">
+      <vue-particles
+        color="#dedede"
+        :particleOpacity=".8"
+        :particlesNumber="120"
+        shapeType="circle"
+        :particleSize="4"
+        linesColor="#dedede"
+        :linesWidth="1"
+        :lineLinked="true"
+        :lineOpacity="0.5"
+        :linesDistance="150"
+        :moveSpeed="2"
+        :hoverEffect="true"
+        hoverMode="grab"
+        :clickEffect="true"
+        clickMode="push"
+        class="lizi" />
+    </div>
   </div>
 </template>
 
 <script>
 import MyHome from '@/views/app/home';
+
 export default {
   components: {
-    MyHome
-  }
+    MyHome, 
+  },
+  mounted() {
+    document.getElementsByTagName('body')[0].appendChild(this.$refs.particles)
+  },
 }
 </script>
 
@@ -21,13 +44,28 @@ export default {
 #app{
   position: relative;
   // background: $main-white;
-  min-width: 1249px !important;
-  max-width: 1920px !important;
   padding: 0 5px;
   box-sizing: border-box;
   min-height: 100%;
   margin: 0 auto;
   height: 100%;
   color: $main-black;
+  // background: rgba($color: $main-white, $alpha: .5);
+  .app-home {
+  
+  }
+}
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba($color: $main-white, $alpha: .8);
+  // background-image: linear-gradient(to right, #7A88FF, #7AFFAF);
+  z-index: -2;
+  #particles-js {
+    height: 100%;
+  }
 }
 </style>

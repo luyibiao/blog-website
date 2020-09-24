@@ -1,44 +1,67 @@
 <template>
   <div class="home">
-    <div class="banner-swipe">
-      <swiper :options="swiperOption" ref="mySwiper">
-        <swiper-slide>I'm Slide 1</swiper-slide>
-        <swiper-slide>I'm Slide 2</swiper-slide>
-        <swiper-slide>I'm Slide 3</swiper-slide>
-        <div class="swiper-button-prev" slot="button-prev"></div>
-        <div class="swiper-button-next" slot="button-next"></div>
-      </swiper>
-    </div>
-    
+    <layout-wrap>
+      <template>
+        <div class="home-wrap">
+          <b-swiper>
+            <b-swiper-item v-for="(item, index) in 3" :key="index">
+              <img src="~@/assets/imgs/ban1.png" alt="" style="width: 100%"/>
+            </b-swiper-item>
+          </b-swiper>
+        </div>
+      </template>
+      
+      <template #right>
+        <hot-article />
+      </template>
+    </layout-wrap>
+
+    <!--推荐-->
+    <recommend-list style="margin-top: 35px;">
+      <recommend-item 
+      v-for="(item, index) in 3" 
+      :key="index" 
+      :bg="recommendPng"
+      >
+      </recommend-item>
+    </recommend-list>
+
+    <layout-wrap class="home-content">
+      <template>
+        <!--文章列表-->
+        <article-list>
+          <article-item>
+            <template #tags>
+              <tag v-for="(item, index) in 5" :key="index">生活</tag>
+            </template>
+          </article-item>
+        </article-list>
+      </template>
+    </layout-wrap>
+
   </div>
 </template>
 
 <script>
+import recommendPng from '@/assets/imgs/recommend.jpg'
 export default {
   data() {
     return {
-      swiperOption: {
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-        loop : true,
-        autoplay: {
-          delay: 3000,
-          stopOnLastSlide: false,
-          disableOnInteraction: true,
-        },
-      }
+      recommendPng
     }
   },
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .home {
-  .swiper-slide {
-    background: red;
-    height: 300px;
+  .home-wrap {
+    .swiper-container {
+      height: 420px;
+    }
+  }
+  .home-content {
+    margin-top: 35px;
   }
 }
 </style>
