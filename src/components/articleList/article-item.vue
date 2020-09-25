@@ -19,20 +19,37 @@
 
     <div class="article-item_content_info">
       <!--作者-->
-      <div></div>
+      <div>
+        <span>
+          <img src="" alt="" />
+        </span>
+        <span>九七</span>
+      </div>
       <!--日期-->
-      <div></div>
+      <div>
+        <span>2020</span>
+      </div>
       <!--观看数-->
-      <div></div>
+      <div>
+        <span>
+          <b-icon name="blog-guankanyanjing" size="35px"/>
+        </span>
+        <span>3.6k</span>
+      </div>
       <!--评论数-->
-      <div></div>
+      <div>
+        <span>
+          <b-icon name="blog-pinglun"/>
+          <span>2.0k</span>
+        </span>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'article-item'
+  name: 'article-item',
 }
 </script>
 
@@ -64,6 +81,10 @@ export default {
       font-size: 14px;
       color: #566573;
     }
+  }
+  .article-item_content_info {
+    display: flex;
+    align-items: center;
   }
 }
 </style>
