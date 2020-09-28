@@ -20,7 +20,7 @@ export default {
 .blog-layout-wrap {
   display: flex;
   .blog-layout-wrap_left {
-    width: 65%;
+    width: 70%;
   }
   .blog-layout-wrap_right {
     flex: 1;

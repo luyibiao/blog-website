@@ -13,8 +13,6 @@
 <script>
 import myHeader from './header.vue';
 import myRouter from './router';
-import mySilder from './silder'
-import sideColumn from '@/components/sideColumn'
 
 export default {
   name: 'home',
@@ -26,9 +24,7 @@ export default {
   },
   components: {
     myHeader,
-    myRouter,
-    mySilder,
-    
+    myRouter,    
   },
   watch: {
     

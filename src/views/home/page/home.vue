@@ -30,12 +30,17 @@
       <template>
         <!--文章列表-->
         <article-list>
-          <article-item>
+          <article-item v-for="(item, index) in 3 " :key="index">
             <template #tags>
               <tag v-for="(item, index) in 5" :key="index">生活</tag>
             </template>
           </article-item>
         </article-list>
+      </template>
+      <template #right>
+        <div v-for="(item, index) in columnList" :key="index">
+          <component :is="item.name"></component>
+        </div>
       </template>
     </layout-wrap>
 
@@ -47,8 +52,12 @@ import recommendPng from '@/assets/imgs/recommend.jpg'
 export default {
   data() {
     return {
-      recommendPng
+      recommendPng,
+      columnList: []
     }
+  },
+  created() {
+    this.columnList = this.$sideColumn[this.$route.name].filter(v => v.name !== 'hot-article')
   },
 }
 </script>

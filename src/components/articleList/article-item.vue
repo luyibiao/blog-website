@@ -19,28 +19,31 @@
 
     <div class="article-item_content_info">
       <!--作者-->
-      <div>
-        <span>
-          <img src="" alt="" />
+      <div class="article-item_content_info-item">
+        <span >
+          <b-icon name="blog-touxiang" size="30px"/>
         </span>
-        <span>九七</span>
+        <span class="info-item-_inner">九七</span>
       </div>
       <!--日期-->
-      <div>
-        <span>2020</span>
+      <div class="article-item_content_info-item">
+        <span>
+          <b-icon name="blog-riqi" size="18px" class="article-item_content_info-icon"/>
+        </span>
+        <span class="info-item-_inner">2020</span>
       </div>
       <!--观看数-->
-      <div>
+      <div class="article-item_content_info-item">
         <span>
-          <b-icon name="blog-guankanyanjing" size="35px"/>
+          <b-icon name="blog-guankanyanjing" size="24px"/>
         </span>
-        <span>3.6k</span>
+        <span class="info-item-_inner">3.6k</span>
       </div>
       <!--评论数-->
-      <div>
+      <div class="article-item_content_info-item">
         <span>
-          <b-icon name="blog-pinglun"/>
-          <span>2.0k</span>
+          <b-icon name="blog-pinglun1" size="16px" />
+          <span class="info-item-_inner">2.0k</span>
         </span>
       </div>
     </div>
@@ -85,6 +88,24 @@ export default {
   .article-item_content_info {
     display: flex;
     align-items: center;
+    margin-top: 20px;
+    font-size: 13px;
+    .article-item_content_info-item {
+      display: flex;
+      align-items: center;
+      margin-right: 15px;
+      .info-item-_inner {
+        margin-left: 3px;
+      }
+      .article-item_content_info-icon {
+        vertical-align: middle;
+        // margin-right: 5px;
+      }
+    }
   }
+}
+
+.components-article-item + .components-article-item {
+  margin-top: 25px;
 }
 </style>

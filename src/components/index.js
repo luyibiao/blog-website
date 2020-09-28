@@ -25,6 +25,9 @@ var conponents = [
   ...Object.values(sideColumn).flat(Infinity)
 ]
 
+// 原型上挂载所有侧边栏组件
+Vue.prototype.$sideColumn = sideColumn
+
 
 //出口函数为组件安装函数
 const install = vm => {
