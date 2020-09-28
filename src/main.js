@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import components from '@/components';
+import overall from '@/utils/overall'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 
@@ -17,6 +18,8 @@ Vue.use(VueAwesomeSwiper, /* { default global options } */)
 components.install(Vue);
 
 Vue.config.productionTip = false
+
+Vue.prototype.$overall = overall
 
 // 路由守卫
 router.beforeEach((to, from, next) => {

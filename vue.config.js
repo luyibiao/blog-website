@@ -1,8 +1,14 @@
+
+const scss = `
+  @import "~@/assets/scss/variable.scss";
+  @import "~@/assets/scss/mixin.scss";
+`
+
 module.exports = {
   css: {
     loaderOptions: {
       scss: {
-        prependData: `@import "~@/assets/scss/variable.scss";`
+        prependData: scss
       }
     }
   },

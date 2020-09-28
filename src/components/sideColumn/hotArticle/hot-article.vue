@@ -62,7 +62,7 @@ export default {
   }
   // max-height: 227px;
   .swiper-container {
-    height: 186px;
+    height: 200px;
   }
   .hot-article-list {
     overflow: hidden;

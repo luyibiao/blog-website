@@ -37,7 +37,6 @@ export default {
   min-height: 100%;
   
   .my-router {
-    // min-height: 100%;
     width: 1200px;
     margin: 10px auto 0;
     padding-bottom: 170px;
