@@ -21,5 +21,14 @@ export default {
       rgbStr = rgbArr.join();
       rgbStr = 'rgb' + (isOpa ? 'a' : '') + '(' + rgbStr + (isOpa ? ',' + opa : '') + ')';
       return rgbStr;
-  }
+  },
+
+  // 设置vuex中面包屑的值
+  setBreadcrumb({prevTitle, prevUrl, currentTitle} = {}) {
+    store.commit('setbBreadcrumbInfo', {
+      prevTitle: prevTitle || '首页',
+      prevUrl: prevUrl || '/',
+      currentTitle: currentTitle || $vue.$route.meta.title
+    })
+  },
 }

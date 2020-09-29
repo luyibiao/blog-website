@@ -54,6 +54,7 @@ export default {
   display: flex;
   flex-direction: column;
   background: #fff;
+  // margin-bottom: 20px;
   .hot-article-title {
     text-align: center;
     padding: 23px 0;
@@ -62,7 +63,7 @@ export default {
   }
   // max-height: 227px;
   .swiper-container {
-    height: 200px;
+    height: 205px;
   }
   .hot-article-list {
     overflow: hidden;

@@ -19,12 +19,13 @@ export default {
 <style lang="scss">
 .blog-layout-wrap {
   display: flex;
+  margin-top: 30px;
   .blog-layout-wrap_left {
     width: 68%;
   }
   .blog-layout-wrap_right {
     flex: 1;
-    margin-left: 35px;
+    margin-left: 25px;
     overflow: hidden;
   }
 }

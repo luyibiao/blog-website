@@ -28,8 +28,9 @@ router.beforeEach((to, from, next) => {
   next()
 })
 
+window.$router = router
 
-new Vue({
+window.$vue = new Vue({
   router,
   store,
   render: h => h(App)

@@ -8,6 +8,24 @@ import hotTags from './hotTags/hot-tags'
 import aboutme from './aboutme/aboutme'
 // 联系我
 import contactme from './contactme/contactme'
+// 网易云热评
+import hotComments from './hotComments/hot-comments'
+
+export const componentsList = [
+  hotArticle,
+  lookAround,
+  hotTags,
+  aboutme,
+  contactme,
+  hotComments
+]
+
+// 公共组件
+const overallArr = [
+  lookAround,
+  hotTags,
+  contactme
+]
 
 export default {
   'home': [
@@ -17,4 +35,17 @@ export default {
     aboutme,
     contactme
   ],
+  'skill': [
+    ...overallArr,
+  ],
+  'prose': [
+    hotComments,
+    ...overallArr,
+  ],
+  'novel': [
+    ...overallArr
+  ],
+  'mine': [
+    ...overallArr
+  ]
 }

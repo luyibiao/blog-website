@@ -39,6 +39,7 @@ export default {
   background: #fff;
   padding: $fs-30 $fs-20x;
   box-sizing: border-box;
+  margin-bottom: 20px;
   .look-around_wrap {
     margin-top: 30px;
     .look-around_wrap-top {

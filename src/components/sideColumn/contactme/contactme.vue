@@ -9,7 +9,7 @@
       >
         <div class="inner" :style="styles(item)">
           <span>
-            <b-icon :name="item.icon" :color="item.color" size="22px"/>
+            <b-icon :name="item.icon" :color="item.color" size="20px"/>
           </span>
           <span class="inner-label">{{item.value}}</span>
         </div>
@@ -70,13 +70,13 @@ export default {
 
 <style scoped lang="scss">
 .components-contactme {
-  margin-top: 20px;
+  margin-bottom: 20px;
   background: #fff;
   margin-top: 20px;
   padding: $fs-30 $fs-20x;
   box-sizing: border-box;
   .components-contactme_list {
-    margin-top: 20px;
+    margin-top: 30px;
     .components-contactme_item {
       display: flex;
       .inner {
@@ -87,6 +87,7 @@ export default {
         box-sizing: border-box;
         display: flex;
         align-items: center;
+        font-size: 13px;
         .inner-label {
           margin-left: 10px;
           // font-size: 13px;
@@ -96,12 +97,12 @@ export default {
         flex-basis: 90px;
         text-align: center;
         color: #fff;
-        font-size: 13px;
+        font-size: 12px;
         border: none;
         outline: none;
-        transition: transform 1s;
+        transition: flex-basis .3s;
         &:hover {
-          transform: rotateY(360deg)
+          flex-basis: 110px
         }
       }
     }

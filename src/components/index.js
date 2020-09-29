@@ -5,7 +5,7 @@ import swipe from './swipe'
 // 图标
 import iconfont from './iconfont'
 // 侧边栏所有栏目
-import sideColumn from './sideColumn'
+import sideColumn, { componentsList } from './sideColumn'
 // 布局
 import layoutWrap from './layout'
 // 推荐
@@ -14,6 +14,8 @@ import recommend from './recommend'
 import basic from './basic'
 // 文章列表
 import article from './articleList'
+// 面包屑
+import breadcrumb from './breadcrumb'
 
 var conponents = [
   ...swipe,
@@ -22,7 +24,8 @@ var conponents = [
   ...recommend,
   ...basic,
   ...article,
-  ...Object.values(sideColumn).flat(Infinity)
+  ...componentsList,
+  ...breadcrumb
 ]
 
 // 原型上挂载所有侧边栏组件

@@ -26,9 +26,8 @@ export default {
 
 <style scoped lang="scss">
 .components-aboutme {
-  margin-top: 20px;
   background: #fff;
-  margin-top: 20px;
+  margin-bottom: 20px;
   padding: $fs-30 $fs-20x;
   box-sizing: border-box;
   .components-aboutme_content {

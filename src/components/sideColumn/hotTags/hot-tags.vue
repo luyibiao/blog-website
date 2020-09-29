@@ -22,7 +22,7 @@ export default {
 <style lang="scss">
 .components-hot-tags {
   background: #fff;
-  margin-top: 20px;
+  margin-bottom: 20px;
   padding: $fs-30 $fs-20x;
   box-sizing: border-box;
   .components-hot-tags_list {

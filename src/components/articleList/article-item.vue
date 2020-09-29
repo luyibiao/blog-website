@@ -21,28 +21,28 @@
       <!--作者-->
       <div class="article-item_content_info-item">
         <span >
-          <b-icon name="blog-touxiang" size="30px"/>
+          <b-icon name="blog-touxiang" size="25px"/>
         </span>
         <span class="info-item-_inner">九七</span>
       </div>
       <!--日期-->
       <div class="article-item_content_info-item">
         <span>
-          <b-icon name="blog-riqi" size="18px" class="article-item_content_info-icon"/>
+          <b-icon name="blog-riqi" size="15px" class="article-item_content_info-icon"/>
         </span>
         <span class="info-item-_inner">2020</span>
       </div>
       <!--观看数-->
       <div class="article-item_content_info-item">
         <span>
-          <b-icon name="blog-guankanyanjing" size="24px"/>
+          <b-icon name="blog-guankanyanjing" size="22px"/>
         </span>
         <span class="info-item-_inner">3.6k</span>
       </div>
       <!--评论数-->
       <div class="article-item_content_info-item">
         <span>
-          <b-icon name="blog-pinglun1" size="16px" />
+          <b-icon name="blog-pinglun1" size="15px" />
           <span class="info-item-_inner">2.0k</span>
         </span>
       </div>
@@ -89,11 +89,12 @@ export default {
     display: flex;
     align-items: center;
     margin-top: 20px;
-    font-size: 13px;
+    font-size: 12px;
+    color: #748594;
     .article-item_content_info-item {
       display: flex;
       align-items: center;
-      margin-right: 15px;
+      margin-right: 25px;
       .info-item-_inner {
         margin-left: 3px;
       }

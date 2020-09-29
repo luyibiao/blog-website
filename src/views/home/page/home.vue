@@ -17,7 +17,7 @@
     </layout-wrap>
 
     <!--推荐-->
-    <recommend-list style="margin-top: 35px;">
+    <recommend-list style="margin-top: 25px;">
       <recommend-item 
       v-for="(item, index) in 3" 
       :key="index" 
@@ -32,15 +32,16 @@
         <article-list>
           <article-item v-for="(item, index) in 3 " :key="index">
             <template #tags>
-              <tag v-for="(item, index) in 5" :key="index">生活</tag>
+              <tag v-for="(item, index) in 5" :key="index"
+                :type="arr[index]"
+              >生活</tag>
             </template>
           </article-item>
         </article-list>
       </template>
       <template #right>
-        <div v-for="(item, index) in columnList" :key="index">
-          <component :is="item.name"></component>
-        </div>
+        <sideColumnAll 
+        :noShowList="['hot-article']"/>
       </template>
     </layout-wrap>
 
@@ -53,11 +54,17 @@ export default {
   data() {
     return {
       recommendPng,
-      columnList: []
+      columnList: [],
+      arr: [
+        'primary',
+        'warning',
+        'info',
+        'danger',
+        'success'
+      ]
     }
   },
   created() {
-    this.columnList = this.$sideColumn[this.$route.name].filter(v => v.name !== 'hot-article')
   },
 }
 </script>
@@ -70,7 +77,7 @@ export default {
     }
   }
   .home-content {
-    margin-top: 35px;
+    // margin-top: 35px;
   }
 }
 </style>
