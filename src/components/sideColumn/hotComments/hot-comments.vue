@@ -23,8 +23,9 @@ export default {
   .components-hot-comments_content {
     margin-top: 20px;
     line-height: 1.6;
-    font-size: 15px;
+    font-size: 14px;
     color: #666;
+    letter-spacing: 1px;
     // color: #748594;
   }
 }

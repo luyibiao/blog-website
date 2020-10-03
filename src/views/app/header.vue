@@ -3,8 +3,10 @@
     <div class="blog-app_home-logo">
      <div>
        <img src="~@/assets/imgs/logo.png" alt="" class="blog-app_home-logo-inner"/>
-       <p class="blog-app_home-logo-text">用代码改变世界~~</p>
      </div>
+
+     <p class="blog-app_home-logo-text">用代码改变世界~~</p>
+
      <div class="home-search_wraper">
        <input class="blog-app_home-input" placeholder="输入关键词搜索"/>
        <button class="home-search-btn">搜索</button>
@@ -83,18 +85,21 @@ export default {
   // background: #fff;
   .blog-app_home-logo {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
     width: 1200px;
     margin: 0 auto;
+    padding: 25px 0;
     .blog-app_home-logo-inner {
       display: block;
       width: 320px;
     }
     .blog-app_home-logo-text {
-      margin: 20px 0 0 0px;
+      // margin: 20px 0 0 0px;
       font-size: 15px;
       font-weight: bold;
+      width: 320px;
+      line-height: 1.2;
     }
     .home-search_wraper {
       display: flex;
@@ -137,7 +142,7 @@ export default {
   }
   .home-header_nav {
     // width: 60%;
-    margin-top: 30px;
+    // margin-top: 30px;
     background: #333;
     .home-header_nav-wraper {
       width: 1200px;
