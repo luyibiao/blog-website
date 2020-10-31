@@ -31,4 +31,9 @@ export default {
       currentTitle: currentTitle || $vue.$route.meta.title
     })
   },
+  // 得到label标签
+  getLabels(val) {
+    if (!val) return []
+    return JSON.parse(val)
+  }
 }

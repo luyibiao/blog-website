@@ -1,19 +1,18 @@
 <template>
   <div class="components-article-item">
-    <div class="article-item_tags">
+    <div class="article-item_tags" v-if="$slots.tags">
       <slot name="tags"></slot>
     </div>
     <div class="article-item_content">
-      <p class="article-item_content-title">一个北安福寺发你看电视</p>
+      <p class="article-item_content-title">
+        <slot name="title">{{item.title}}</slot>
+      </p>
       <div class="article-item_content-imgs">
         <img :src="require(`@/assets/imgs/a-test${index + 1}.png`)" v-for="(item, index) in 2" :key="index"/>
       </div>
 
       <div class="article-item_content_inner">
-        收到了没考虑过地方官马克看了多个老豆腐干考虑非公开饭店烧烤老感觉放大了收到了没考虑过地方官马克看了多个老豆腐干考虑非公开饭店烧烤老感觉放大了
-        收到了没考虑过地方官马克看了多个老豆腐干考虑非公开饭店烧烤老感觉放大了收到了没考虑过地方官马克看了多个老豆腐干考虑非公开饭店烧烤老感觉放大了
-        收到了没考虑过地方官马克看了多个老豆腐干考虑非公开饭店烧烤老感觉放大了收到了没考虑过地方官马克看了多个老豆腐干考虑非公开饭店烧烤老感觉放大了
-        收到了没考虑过地方官马克看了多个老豆腐干考虑非公开饭店烧烤老感觉放大了
+        {{item.contentdesc}}
       </div>
     </div>
 
@@ -23,27 +22,29 @@
         <span >
           <b-icon name="blog-touxiang" size="25px"/>
         </span>
-        <span class="info-item-_inner">九七</span>
+        <span class="info-item-_inner">{{item.author}}</span>
       </div>
       <!--日期-->
       <div class="article-item_content_info-item">
         <span>
           <b-icon name="blog-riqi" size="15px" class="article-item_content_info-icon"/>
         </span>
-        <span class="info-item-_inner">2020</span>
+        <span class="info-item-_inner">
+          {{item.create_time | formatDatetime('yyyy-MM-dd')}}
+        </span>
       </div>
       <!--观看数-->
       <div class="article-item_content_info-item">
         <span>
           <b-icon name="blog-guankanyanjing" size="22px"/>
         </span>
-        <span class="info-item-_inner">3.6k</span>
+        <span class="info-item-_inner">{{item.watch_num}}</span>
       </div>
       <!--评论数-->
       <div class="article-item_content_info-item">
         <span>
           <b-icon name="blog-pinglun1" size="15px" />
-          <span class="info-item-_inner">2.0k</span>
+          <span class="info-item-_inner">{{item.comment_num}}</span>
         </span>
       </div>
     </div>
@@ -53,6 +54,12 @@
 <script>
 export default {
   name: 'article-item',
+  props: {
+    item: {
+      type: Object,
+      default: () => ({})
+    }
+  }
 }
 </script>
 
@@ -61,8 +68,9 @@ export default {
   padding: 40px;
   box-sizing: border-box;
   background: #fff;
+  cursor: pointer;
   .article-item_tags {
-    margin-bottom: 35px;
+    margin-bottom: 20px;
   }
   .article-item_content {
     .article-item_content-title {

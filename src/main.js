@@ -9,6 +9,9 @@ import 'swiper/dist/css/swiper.css'
 
 import VueParticles from 'vue-particles'
 
+import api from '@/api'
+import vueFilters from '@/filters/filters.js'
+
 Vue.use(VueParticles)
 
 
@@ -17,9 +20,15 @@ Vue.use(VueAwesomeSwiper, /* { default global options } */)
 //注入所有组件
 components.install(Vue);
 
+// 注册过滤器
+Vue.mixin({
+  filters: vueFilters
+});
+
 Vue.config.productionTip = false
 
 Vue.prototype.$overall = overall
+Vue.prototype.$api = api
 
 // 路由守卫
 router.beforeEach((to, from, next) => {

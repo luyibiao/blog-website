@@ -3,7 +3,7 @@
     <img-mask :src="bg">
       <template #inner>
         <div class="recommend-item_inner-tag">
-          <tag>生活</tag>
+          <tag class="reset-tags">生活</tag>
           <p class="recommend-item_inner-title">好舒服十多个开始的打暑假工接口接口辅导机构</p>
         </div>
       </template>

@@ -10,6 +10,8 @@ import novel from './novel'
 import mine from './mine'
 // 留言
 import contact from './contact'
+// 详情
+import detail from './contact'
 
 export default [
   ...home,

@@ -39,18 +39,18 @@ export default {
   display: inline-block;
   border-radius: 4px;
   margin-right: 10px;
-  margin-top: 10px;
+  margin-bottom: 10px;
   border: 1px solid #e0e0e0;
   user-select: none;
   color: rgba(0,0,0,.44);
   background: #fff;
   transition: all .3s;
   $types: (
-    (bg:#ecf5ff, fc: #409eff, bdc: #d9ecff, type: primary),
-    (bg:#f4f4f5, fc: #909399, bdc: #e9e9eb, type: info),
-    (bg:#fdf6ec, fc: #e6a23c, bdc: rgba($color: #e6a23c, $alpha: .5), type: warning),
-    (bg:#fef0f0, fc: #f56c6c, bdc:  #fde2e2, type: danger),
-    (bg:#f0f9eb, fc: #67c23a, bdc:  #e1f3d8, type: success),
+    (bg:#19B5FE, fc: #fff, bdc: #d9ecff, type: primary),
+    (bg:#4A4A4A, fc: #fff, bdc: #e9e9eb, type: info),
+    (bg:#ffbb50, fc: #fff, bdc: rgba($color: #e6a23c, $alpha: .5), type: warning),
+    (bg:#ff5e5c, fc: #fff, bdc:  #fde2e2, type: danger),
+    (bg:#1ac756, fc: #fff, bdc:  #e1f3d8, type: success),
   );
 
 
@@ -59,7 +59,8 @@ export default {
 
     &.components-tags_#{map-get($item, type)} {
       @include setBg($bg:map-get($item, bg), $fc:map-get($item, fc)){
-        border-color: map-get($item, bdc);
+        // border-color: map-get($item, bdc);
+        border-color: transparent;
       }
       &.components-tags_clickAble {
         
