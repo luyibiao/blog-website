@@ -7,5 +7,7 @@ export default {
     prevUrl: '',
     // 当前页面标题
     currentTitle: ''
-  }
+  },
+  // 记录当前页面标题
+  currentTitle: ''
 }

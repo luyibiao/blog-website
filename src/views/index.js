@@ -11,7 +11,7 @@ import mine from './mine'
 // 留言
 import contact from './contact'
 // 详情
-import detail from './contact'
+import detail from './detail'
 
 export default [
   ...home,
@@ -19,5 +19,6 @@ export default [
   ...prose,
   ...novel,
   ...mine,
-  ...contact
+  ...contact,
+  ...detail
 ]

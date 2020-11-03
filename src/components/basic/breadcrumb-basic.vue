@@ -20,7 +20,7 @@ export default {
     ...mapGetters(['getBreadcrumbInfo'])
   },
   created() {
-    this.title = $vue.$route.meta.title
+    this.title = $vue.$route.meta.title || '九七个人博客'
   },
 }
 </script>

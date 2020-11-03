@@ -70,6 +70,7 @@ export default {
   methods: {
     go(v) {
       if (this.currentValue === v.label) return
+      this.$store.commit('setCurrentTitle', '首页' )
       this.$overall.setBreadcrumb({currentTitle: v.name})
       this.$router.push({
         path: v.url

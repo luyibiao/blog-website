@@ -5,9 +5,10 @@
       <article-item 
       :item="item"
       v-for="(item, index) in list" 
+      @click.native="go(item)"
       :key="index">
         <template #tags v-if="$overall.getLabels(item.label).length">
-          <tag v-for="(item, index) in $overall.getLabels(item.label)" :key="index">生活</tag>
+          <tag v-for="(item, index) in $overall.getLabels(item.label)" :key="index">{{item.label}}</tag>
         </template>
       </article-item>
     </article-list>
@@ -34,6 +35,19 @@ export default {
       }
       this.$api.getArticleList(sendData).then(res => {
         this.list = res.list
+      })
+    },
+    // 跳文章详情
+    go(item) {
+      this.$overall.setBreadcrumb({
+        prevUrl: this.$route.path,
+        currentTitle: item.title
+      })
+      this.$router.push({
+        name: 'article-detail',
+        query: {
+          id: item.id
+        }
       })
     }
   },

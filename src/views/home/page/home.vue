@@ -81,6 +81,7 @@ export default {
   },
   created() {
     this.getBannerList()
+    this.$store.commit('setCurrentTitle', '首页')
   },
   methods: {
     getBannerList() {
