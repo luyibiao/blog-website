@@ -7,7 +7,9 @@
       class="components-img-mask"/>
     </div>
     <div class="components-img-wrap_inner" v-if="$slots.inner">
-      <slot name="inner"></slot>
+      <div class="components-img-wrap_inner-box">
+        <slot name="inner"></slot>
+      </div>
     </div>
   </div>
 </template>
@@ -61,6 +63,14 @@ export default {
     width: 100%;
     height: 100%;
     z-index: 10;
+    .components-img-wrap_inner-box {
+      position: absolute;
+      bottom: 20px;
+      left: 25px;
+      right: 25px;
+      z-index: 1000;
+      color: #fff;
+    }
   }
 }
 </style>

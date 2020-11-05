@@ -45,11 +45,11 @@ export default {
     .look-around_wrap-top {
       position: relative;
       .look-around_wrap-top_inner {
-        position: absolute;
-        bottom: 20px;
-        color: #fff;
-        left: 15px;
-        right: 15px;
+        // position: absolute;
+        // bottom: 20px;
+        // color: #fff;
+        // left: 15px;
+        // right: 15px;
         .date {
           font-size: 12px;
           margin-bottom: 8px;

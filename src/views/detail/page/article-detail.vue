@@ -4,15 +4,19 @@
       <breadcrumb-basic />
       <!--文章内容-->
       <contents></contents>
+      <!--评论-->
+      <comment></comment>
     </layout-wrap>
   </div>
 </template>
 
 <script>
 import contents from '../components/contents'
+import comment from '../components/comment'
 export default {
   components: {
-    contents
+    contents,
+    comment
   },
   data() {
     return {

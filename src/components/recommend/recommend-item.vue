@@ -38,11 +38,11 @@ export default {
   cursor: pointer;
  
   .recommend-item_inner-tag {
-    position: absolute;
-    left: 35px;
-    right: 35px;
-    bottom: 30px;
-    z-index: 1000;
+    // position: absolute;
+    // left: 35px;
+    // right: 35px;
+    // bottom: 30px;
+    // z-index: 1000;
   }
   .recommend-item_inner-title {
     color: #fff;

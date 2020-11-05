@@ -45,8 +45,37 @@
     </div>
     <div class="content_inner">
       <div v-html="detail.content"></div>
-      <!--打赏活点赞-->
-      <div class=""></div>
+      <!--打赏和点赞-->
+      <div class="reward">
+        <div class="reward-like">
+          <b-icon name="blog-xihuan2" size="18px" class="like-icon"/>
+          <span class="reward-inner">赞(88)</span>
+        </div>
+        <div class="reward-r">
+          <b-icon name="blog-meiyuanqian" size="18px"/>
+          <!-- <span class="reward-inner"></span> -->
+        </div>
+      </div>
+    </div>
+
+    <!--上一篇下一篇-->
+    <div class="about-article">
+      <img-mask :src="require('@/assets/imgs/haitan.jpg')">
+        <template #inner>
+          <div class="about-article-tag">
+            <tag class="reset-tags">生活</tag>
+            <p class="about-article-title">上一篇：好舒服十多个开始的打暑假工接口接口辅导机构</p>
+          </div>
+        </template>
+      </img-mask>
+      <img-mask :src="require('@/assets/imgs/haitan.jpg')">
+        <template #inner>
+          <div class="about-article-tag">
+            <tag class="reset-tags">生活</tag>
+            <p class="about-article-title">下一篇：好舒服十多个开始的打暑假工接口接口辅导机构</p>
+          </div>
+        </template>
+      </img-mask>
     </div>
   </div>
 </template>
@@ -79,7 +108,7 @@ export default {
 <style lang="scss">
   .article-detail-content {
     background: #fff;
-    padding: 40px 40px;
+    padding: 40px 40px 50px;
     box-sizing: border-box;
     .content_header {
       position: relative;
@@ -136,6 +165,67 @@ export default {
 
     .content_inner {
       padding: 35px 0 0;
+      .reward {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 100px;
+        .reward-like {
+          color: #F74840;
+          display: flex;
+          align-items: center;
+          border: 1px solid #F74840;
+          padding: 5px 8px;
+          cursor: pointer;
+          position:relative;
+          user-select: none;
+          .like-icon {
+            animation: rewardlike 3s;
+            animation-iteration-count: infinite;
+          }
+        }
+        .reward-r {
+          color: #748594;
+          border: 1px solid rgba($color:  #748594, $alpha: .6);
+          padding: 5px 20px;
+          cursor: pointer;
+          transition: border-color .5s;
+          &:hover {
+            border-color: rgba($color:  #748594, $alpha: 1);
+          }
+        }
+        .reward-inner {
+          margin-left: 6px;
+          font-size: 14px;
+          
+        }
+        > div + div {
+          margin-left: 5px;
+        }
+      }
     }
+    .about-article {
+      display: flex;
+      height: 180px;
+      margin-top: 70px;
+      > div {
+        flex: 1;
+        max-width: 50%;
+      }
+      > div + div {
+        margin-left: 2px;
+      }
+      .about-article-tag {
+        .about-article-title {
+          line-height: 1.3;
+        }
+      }
+    }
+  }
+
+  @keyframes rewardlike {
+    0%   {transform: scale(1);}
+    50%  {transform: scale(1.3)}
+    100% {transform: scale(1)}
   }
 </style>
