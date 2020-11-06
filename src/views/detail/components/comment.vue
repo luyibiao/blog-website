@@ -1,8 +1,11 @@
 <template>
   <div class="article-detail-comment">
-    <p>没有登录过？
-      <span @click="register">立即注册</span>
-    </p>
+    <column-title class="title">评论一下</column-title>
+    <div class="is-login">
+      <p>没有登录过？
+        <span @click="register" class="register-btn">立即注册</span>
+      </p>
+    </div>
   </div>
 </template>
 
@@ -18,6 +21,30 @@ export default {
 </script>
 <style lang="scss">
   .article-detail-comment {
+    background: #fff;
     margin-top: 20px;
+    padding: 40px 40px 50px;
+    .title {
+      font-size: 20px;
+    }
+    .components-column-title {
+      &::before {
+        height: 20px;
+      }
+    }
+    .is-login {
+      margin-top: 40px;
+      // font-weight: bold;
+      color: #363636;
+      .register-btn {
+        cursor: pointer;
+        color: #63B8FF;
+        transition: color .2s;
+        &:hover {
+          color: #748594;
+        }
+        // font-weight: bold;
+      }
+    }
   }
 </style>

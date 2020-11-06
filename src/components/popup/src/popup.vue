@@ -4,6 +4,7 @@
     :width="width"
     :isHeader="isHeader"
     :isFooter="isFooter"
+    :top="top"
     v-model="visible" 
     append-to-body 
     :close-on-click-modal="false" 
@@ -25,7 +26,7 @@
 <script>
   export default {
     name:'ui-popup',
-    props: ['value','title','width', 'isHeader', 'isFooter'],
+    props: ['value','title','width', 'isHeader', 'isFooter', 'top'],
     computed: {
       //visible控制器，点X时调用取消
       visible: {
