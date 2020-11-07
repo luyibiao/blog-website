@@ -1,5 +1,5 @@
 <template>
-  <div class="components-input">
+  <div class="components-input" :class="classes">
     <input 
     type="text" 
     :value="value"
@@ -7,6 +7,11 @@
     @focus="focus"
     @input="$emit('input', $event.target.value)"
     class="components-input_inner"/>
+    <template v-if="$slots.append">
+      <div class="append-btn" @click="$emit('appendclick')">
+        <slot name="append"></slot>
+      </div>
+    </template>
   </div>
 </template>
 
@@ -27,6 +32,13 @@ export default {
       default: ''
     },
   },
+  computed: {
+    classes() {
+      return [
+        this.$slots.append && 'components-input-append'
+      ]
+    }
+  },
   methods: {
     focus() {
       this.$emit('focus', this.drag)
@@ -38,14 +50,14 @@ export default {
 <style lang="scss">
   .components-input {
     width: 350px;
-    display: inline-block;
+    display: inline-table;
     .components-input_inner {
       background: #Fff;
       height: 50px;
       color: #748594;
       border: 1px solid #e2e2e2;
       width: 100%;
-      display: inline-block;
+      display: table-cell;
       font-size: 15px;
       padding: 0px 20px;
       box-sizing: border-box;
@@ -54,6 +66,28 @@ export default {
       transition: border-color .3s;
       &:focus {
         border-color: #748594;
+      }
+    }
+
+    &.components-input-append {
+      .components-input_inner {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+
+    .append-btn {
+      display: table-cell;
+      height: 100%;
+      padding: 0px 15px;
+      box-sizing: border-box;
+      background: #2e2d38;
+      color: #fff;
+      cursor: pointer;
+      text-align: center;
+      user-select: none;
+      &:hover {
+        opacity: .8;
       }
     }
   }

@@ -12,6 +12,14 @@ import VueParticles from 'vue-particles'
 import api from '@/api'
 import vueFilters from '@/filters/filters.js'
 
+import { Message } from 'element-ui';
+
+
+// Vue.component(Message.name, Message);
+// Vue.component(Button.name, Button);
+
+Vue.prototype.$message = Message
+
 Vue.use(VueParticles)
 
 

@@ -30,7 +30,7 @@
       <!--按钮-->
       <div class="save-btn">
         <button class="btn" @click="reject()">取消</button>
-        <button class="btn save">确定</button>
+        <button class="btn save" @click="save">确定</button>
       </div>
     </div>
   </ui-popup>
@@ -62,7 +62,21 @@ export default {
         placeholder: '请输入验证码',
         label: '验证码',
         render: v => {
-          return <b-input value={this.forms[v.keys]} placeholder={v.placeholder} drag={v.index} on-focus={this.focus.bind(this, v.index)}/>
+          return (
+            <div class="ver-code">
+              <b-input 
+                value={this.forms[v.keys]} 
+                placeholder={v.placeholder} 
+                drag={v.index}
+                on-input={this.codeInput}
+                on-appendclick={this.sendCode.bind(this)}
+                on-focus={this.focus.bind(this, v.index)}>
+                  <template slot='append'>
+                    发送验证码
+                  </template>
+                </b-input>
+            </div>
+          )
         }
       }],
       currentIndex: -1
@@ -71,12 +85,32 @@ export default {
   components: {
     contentJsx
   },
+  created() {
+    console.log(this.$overall)
+  },
   methods: {
     close() {
       this.reject()
     },
     focus(v) {
       this.currentIndex = v
+    },
+    codeInput(val) {
+      this.forms.code = val
+    },
+    // 发送验证码
+    sendCode() {
+      this.$api.sendCode({
+        userEmail: this.forms.userEmail,
+        userName: this.forms.userName
+      }).then(_ => {
+        this.$message.success('验证码已发送到邮箱')
+      })
+    },
+    save() {
+      this.$api.checkBlogLogin(this.forms).then(res => {
+
+      })
     }
   },
 }
@@ -92,11 +126,11 @@ export default {
       .components-register-main {
         overflow: hidden;
         .components-register-header {
-          position: relative;
+          // position: relative;
           .components-register-close {
             position: absolute;
-            right: 260px;
-            top: 100px;
+            right: 12%;
+            top: 9%;
             cursor: pointer;
             transition: transform .3s;
             &:hover {
@@ -107,7 +141,7 @@ export default {
 
         .components-register-wrap {
           width: 440px;
-          margin: 300px auto 0;
+          margin: 14% auto 0;
           .register-item {
             margin-bottom: 30px;
             .register-item-inner {
@@ -116,6 +150,10 @@ export default {
               display: inline-block;
               width: 80px;
               transition: transform .3s;
+            }
+            .ver-code {
+              display: inline-block;
+              width: 350px;
             }
             &.is-active {
              .register-item-inner {

@@ -3,7 +3,7 @@
     <column-title class="title">评论一下</column-title>
     <div class="is-login">
       <p>没有登录过？
-        <span @click="register" class="register-btn">立即注册</span>
+        <span @click="register" class="register-btn">立即登录</span>
       </p>
     </div>
   </div>
