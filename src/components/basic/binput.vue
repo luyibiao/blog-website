@@ -8,7 +8,10 @@
     @input="$emit('input', $event.target.value)"
     class="components-input_inner"/>
     <template v-if="$slots.append">
-      <div class="append-btn" @click="$emit('appendclick')">
+      <div 
+          class="append-btn" 
+          :class="appendClass"
+          @click="isAppendBtnClick ? $emit('appendclick') : null">
         <slot name="append"></slot>
       </div>
     </template>
@@ -31,11 +34,20 @@ export default {
       type: [String, Number],
       default: ''
     },
+    isAppendBtnClick: {
+      type: Boolean,
+      default: true
+    }
   },
   computed: {
     classes() {
       return [
-        this.$slots.append && 'components-input-append'
+        this.$slots.append && 'components-input-append',
+      ]
+    },
+    appendClass() {
+      return [
+        this.isAppendBtnClick && 'is-append'
       ]
     }
   },
@@ -83,11 +95,13 @@ export default {
       box-sizing: border-box;
       background: #2e2d38;
       color: #fff;
-      cursor: pointer;
       text-align: center;
       user-select: none;
       &:hover {
         opacity: .8;
+      }
+      &.is-append {
+        cursor: pointer;
       }
     }
   }

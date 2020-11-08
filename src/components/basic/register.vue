@@ -4,7 +4,7 @@
   :isHeader="false"
   :isFooter="false"
   top="0">
-    <div class="components-register-main">
+    <div class="components-register-main" v-loading="loading">
       <div class="components-register-header">
         <span class="components-register-close" @click="close">
           <b-icon name="blog-searchclose" size="30" color="#748594"></b-icon>
@@ -38,6 +38,7 @@
 
 <script>
 import contentJsx from '@/components/js/src/content.jsx'
+import { regsEmail } from '@/utils/regs'
 export default {
   data() {
     return {
@@ -68,18 +69,23 @@ export default {
                 value={this.forms[v.keys]} 
                 placeholder={v.placeholder} 
                 drag={v.index}
+                isAppendBtnClick={this.isAppendBtnClick}
                 on-input={this.codeInput}
                 on-appendclick={this.sendCode.bind(this)}
                 on-focus={this.focus.bind(this, v.index)}>
                   <template slot='append'>
-                    发送验证码
+                    {this.codeMsg}
                   </template>
                 </b-input>
             </div>
           )
         }
       }],
-      currentIndex: -1
+      currentIndex: -1,
+      isAppendBtnClick: true,
+      codeMsg: '发送验证码',
+      timer: null,
+      loading: false
     }
   },
   components: {
@@ -100,16 +106,65 @@ export default {
     },
     // 发送验证码
     sendCode() {
+      if(!this.forms.userName) {
+        this.$message.error('昵称不能为空')
+        return
+      }
+      if (!this.forms.userEmail) {
+        this.$message.error('邮箱不能为空')
+        return
+      }
+      if (!regsEmail.test(this.forms.userEmail)) {
+        this.$message.error('邮箱格式错误')
+        return
+      }
+      this.loading = true
       this.$api.sendCode({
         userEmail: this.forms.userEmail,
         userName: this.forms.userName
       }).then(_ => {
+        this.loading = false
+        this.isAppendBtnClick = false
+        // 一分钟倒计时
+        this.timeOut()
         this.$message.success('验证码已发送到邮箱')
+      }).catch(_ => {
+        this.loading = false
       })
     },
+    timeOut() {
+      this.timer && clearInterval(this.timer)
+      this.isAppendBtnClick = false
+      let seconds = 60
+      this.timer = setInterval(_ => {
+        if (seconds === 0) {
+          this.codeMsg = '发送验证码'
+          clearInterval(this.timer)
+          this.isAppendBtnClick = true
+        } else {
+          this.codeMsg = (seconds --) + 's'
+        }
+      }, 1000)
+    },
     save() {
+      if(!this.forms.userName) {
+        this.$message.error('昵称不能为空')
+        return
+      }
+      if (!this.forms.userEmail) {
+        this.$message.error('邮箱不能为空')
+        return
+      }
+      if (!this.forms.code) {
+        this.$message.error('验证码不能为空')
+        return
+      }
+      this.loading = false
       this.$api.checkBlogLogin(this.forms).then(res => {
-
+        this.loading = false
+        this.$message.success('畅所欲言吧~~')
+      }).catch(_ => {
+        this.loading = false
       })
     }
   },
