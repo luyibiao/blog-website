@@ -35,5 +35,7 @@ export default {
   getLabels(val) {
     if (!val) return []
     return JSON.parse(val)
-  }
+  },
+  // 判断是否为对象
+  isObject: val => Object.prototype.toString.call(val).slice(8, -1) === 'Object'
 }

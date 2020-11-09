@@ -11,7 +11,11 @@
 
 <script>
 import registers from '@/components/basic/register'
+import storage from '@/utils/storage'
 export default {
+  created() {
+    console.log(storage.getCache('userInfo'))
+  },
   methods: {
     register() {
       this.$popup(registers)

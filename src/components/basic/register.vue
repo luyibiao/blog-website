@@ -39,6 +39,7 @@
 <script>
 import contentJsx from '@/components/js/src/content.jsx'
 import { regsEmail } from '@/utils/regs'
+import storage from '@/utils/storage'
 export default {
   data() {
     return {
@@ -91,9 +92,7 @@ export default {
   components: {
     contentJsx
   },
-  created() {
-    console.log(this.$overall)
-  },
+  
   methods: {
     close() {
       this.reject()
@@ -106,10 +105,6 @@ export default {
     },
     // 发送验证码
     sendCode() {
-      if(!this.forms.userName) {
-        this.$message.error('昵称不能为空')
-        return
-      }
       if (!this.forms.userEmail) {
         this.$message.error('邮箱不能为空')
         return
@@ -163,6 +158,8 @@ export default {
       this.$api.checkBlogLogin(this.forms).then(res => {
         this.loading = false
         this.$message.success('畅所欲言吧~~')
+        storage.setCache('userInfo', res, {timeStap: 60 * 24 * 30, isunicode: true})
+        this.resolve()
       }).catch(_ => {
         this.loading = false
       })
