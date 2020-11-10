@@ -12,7 +12,10 @@ import VueParticles from 'vue-particles'
 import api from '@/api'
 import vueFilters from '@/filters/filters.js'
 
-import { Message, Loading, Dialog } from 'element-ui';
+import { Message, Loading, Dialog, Input } from 'element-ui';
+
+import Vue2Emoji from 'vuejs-emoji'
+Vue.use(Vue2Emoji)
 
 
 // Vue.component(Loading.name, Loading);
@@ -21,6 +24,7 @@ import { Message, Loading, Dialog } from 'element-ui';
 Vue.use(Loading.directive);
 
 Vue.use(Dialog);
+Vue.use(Input);
 
 Vue.prototype.$loading = Loading.service;
 Vue.prototype.$message = Message

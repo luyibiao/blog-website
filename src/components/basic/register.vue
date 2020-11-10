@@ -49,7 +49,8 @@ export default {
         // 用户邮箱
         userEmail: '',
         // 验证码
-        code: ''
+        code: '',
+        // bg_color: ''
       },
       list: [{
         keys: 'userName',
@@ -155,6 +156,7 @@ export default {
         return
       }
       this.loading = false
+      // this.forms.bg_color = this.$overall.randomHexColorCode()
       this.$api.checkBlogLogin(this.forms).then(res => {
         this.loading = false
         this.$message.success('畅所欲言吧~~')

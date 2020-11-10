@@ -21,6 +21,8 @@ import breadcrumb from './breadcrumb'
 import dialog from './dialog'
 // 弹框载体
 import popup from './popup';
+// 评论组件
+import comment from './comment'
 
 var conponents = [
   ...swipe,
@@ -33,12 +35,10 @@ var conponents = [
   ...breadcrumb,
   ...dialog,
   ...popup,
+  ...comment
 ]
-
 // 原型上挂载所有侧边栏组件
 Vue.prototype.$sideColumn = sideColumn
-
-
 //出口函数为组件安装函数
 const install = vm => {
   conponents.forEach(component => {

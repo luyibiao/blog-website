@@ -37,5 +37,11 @@ export default {
     return JSON.parse(val)
   },
   // 判断是否为对象
-  isObject: val => Object.prototype.toString.call(val).slice(8, -1) === 'Object'
+  isObject: val => Object.prototype.toString.call(val).slice(8, -1) === 'Object',
+
+  // 随机十六进制颜色
+  randomHexColorCode: _ => {
+    let n = (Math.random() * 0xfffff * 1000000).toString(16);
+    return '#' + n.slice(0, 6);
+  }
 }

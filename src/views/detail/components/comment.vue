@@ -6,6 +6,10 @@
         <span @click="register" class="register-btn">立即登录</span>
       </p>
     </div>
+
+    <div class="article-detail-comment_inner">
+      <b-comment />
+    </div>
   </div>
 </template>
 
@@ -49,6 +53,10 @@ export default {
         }
         // font-weight: bold;
       }
+    }
+
+    .article-detail-comment_inner {
+      margin-top: 50px;
     }
   }
 </style>
