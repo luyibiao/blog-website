@@ -12,6 +12,7 @@
     "core-js": "^3.6.5",
     "element-ui": "^2.14.0",
     "particles.js": "^2.0.0",
+    "svg-captcha": "^1.4.0",
     "v-emoji-picker": "^2.3.1",
     "vue": "^2.6.11",
     "vue-awesome-swiper": "^3.1.3",

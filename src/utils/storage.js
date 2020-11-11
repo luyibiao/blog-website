@@ -46,6 +46,7 @@ const getCache = (key, type = localStorage) => {
   
   let opt = isUnicCode ? unicode.stringDecode(type.getItem(keys)) : type.getItem(key)
   opt = opt ? JSON.parse(opt) : {}
+
   if (opt.timeStap) {
     if (new Date().getTime() < opt.timeStap) {
       return opt.value
