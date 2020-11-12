@@ -6,6 +6,10 @@
       <contents></contents>
       <!--评论-->
       <comment></comment>
+
+      <template #right>
+        <sideColumnAll />
+      </template>
     </layout-wrap>
   </div>
 </template>
@@ -28,3 +32,7 @@ export default {
   },
 }
 </script>
+
+<style lang="scoped">
+  
+</style>

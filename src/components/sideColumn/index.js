@@ -28,24 +28,16 @@ const overallArr = [
 ]
 
 export default {
-  'home': [
-    hotArticle,
-    lookAround,
-    hotTags,
-    aboutme,
-    contactme
-  ],
-  'skill': [
-    ...overallArr,
-  ],
-  'prose': [
-    hotComments,
-    ...overallArr,
-  ],
-  'novel': [
-    ...overallArr
-  ],
-  'mine': [
-    ...overallArr
-  ]
+  // 热门文章
+  'HOT-ARTICLE': [hotArticle],
+  // 随便看看
+  'LOOK-AROUND': [lookAround],
+  // 热门标签
+  'HOT-TAGS': [hotTags],
+  // 关于我
+  'ABOUTME': [aboutme],
+  // 联系我
+  'CONTACTME': [contactme],
+  // 网易云热评
+  'HOE-COMMENTS': [hotComments]
 }

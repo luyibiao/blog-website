@@ -47,7 +47,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '~@/assets/scss/variable.scss';
 @import '~@/assets/scss/mixin.scss';
 @import '~@/assets/scss/base.scss';

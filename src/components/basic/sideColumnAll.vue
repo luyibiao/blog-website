@@ -13,6 +13,10 @@ export default {
     noShowList: {
       type: Array,
       default: () => []
+    },
+    pageCode: {
+      type: String,
+      default: 'HOME'
     }
   },
   data() {
@@ -21,7 +25,7 @@ export default {
     }
   },
   created() {
-    this.columnList = this.$sideColumn[this.$route.name].filter(v => !this.noShowList.includes(v.name))
+    // this.columnList = this.$sideColumn[this.$route.name].filter(v => !this.noShowList.includes(v.name))
   },
 }
 </script>

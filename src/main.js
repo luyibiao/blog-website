@@ -14,9 +14,11 @@ import vueFilters from '@/filters/filters.js'
 
 import { Message, Loading, Dialog, Input } from 'element-ui';
 
-import Vue2Emoji from 'vuejs-emoji'
-Vue.use(Vue2Emoji)
+// import Vue2Emoji from 'vuejs-emoji'
+// Vue.use(Vue2Emoji)
 
+import VEmojiPicker from 'v-emoji-picker';
+Vue.use(VEmojiPicker);
 
 // Vue.component(Loading.name, Loading);
 // Vue.component(Button.name, Button);
