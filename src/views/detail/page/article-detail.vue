@@ -3,7 +3,7 @@
     <layout-wrap>
       <breadcrumb-basic />
       <!--文章内容-->
-      <contents></contents>
+      <contents :detail="detail"></contents>
       <!--评论-->
       <comment></comment>
 
@@ -24,11 +24,22 @@ export default {
   },
   data() {
     return {
-      
+      detail: {},
+      query: {}
     }
   },
   created() {
+    this.getDetail()
     // this.$store.commit('setCurrentTitle', 131)
+  },
+  methods: {
+    getDetail() {
+      this.query = this.$route.query
+      this.$api.queryArticleDetail({id: this.query.id}).then(res => {
+        this.detail = res
+        this.$store.commit('setPareneCode', res.type)
+      })
+    }
   },
 }
 </script>

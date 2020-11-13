@@ -25,10 +25,19 @@
 
 <script>
 import MyHome from '@/views/app/home';
+import { mapGetters } from 'vuex'
 
 export default {
   components: {
     MyHome, 
+  },
+  computed: {
+    ...mapGetters(['getCurrentTitle'])
+  },
+  watch: {
+    getCurrentTitle() {
+      document.title = this.getCurrentTitle ? this.getCurrentTitle + '-九七个人博客' : '九七个人博客'
+    }
   },
   created() {
     //在页面加载时读取sessionStorage里的状态信息 
@@ -47,7 +56,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '~@/assets/scss/variable.scss';
 @import '~@/assets/scss/mixin.scss';
 @import '~@/assets/scss/base.scss';

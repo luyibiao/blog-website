@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'sideColumnAll',
   props: {
@@ -19,13 +20,30 @@ export default {
       default: 'HOME'
     }
   },
+  computed: {
+    ...mapGetters(['getArticleType'])
+  },
   data() {
     return {
-      columnList: []
+      columnList: [],
+      query: {}
     }
   },
   created() {
-    // this.columnList = this.$sideColumn[this.$route.name].filter(v => !this.noShowList.includes(v.name))
+    this.query = this.$route.query
+    this.getColumnList()
+  },
+  methods: {
+    getColumnList() {
+      let isExitColumn = false
+      const instance = this.getArticleType.find(v => v.code === this.query.code) || {}
+      if (instance.side_column) {
+         const arr = instance.side_column.split(',')
+         this.columnList = arr.reduce((acc, v, i) => this.$sideColumn[v] ? [...acc, ...this.$sideColumn[v]] : [], [])
+         isExitColumn = true
+      }
+      this.$emit('finish', isExitColumn)
+    }
   },
 }
 </script>

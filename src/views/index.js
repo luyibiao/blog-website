@@ -12,6 +12,8 @@ import mine from './mine'
 import contact from './contact'
 // 详情
 import detail from './detail'
+// 书籍一级栏目路由
+import articleColumn from './column'
 
 export default [
   ...home,
@@ -20,5 +22,6 @@ export default [
   ...novel,
   ...mine,
   ...contact,
-  ...detail
+  ...detail,
+  ...articleColumn
 ]

@@ -82,25 +82,23 @@
 
 <script>
 export default {
+  props: {
+    detail: {
+      type: Object,
+      default: () => ({})
+    }
+  },
   data() {
     return {
       query: {},
-      detail: {}
+      
     }
   },
   created() {
-    this.init()
-    this.getDetail()
+   
   },
   methods: {
-    init() {
-      this.query = this.$route.query || {}
-    },
-    getDetail() {
-      this.$api.queryArticleDetail({id: this.query.id}).then(res => {
-        this.detail = res
-      })
-    }
+    
   },
 }
 </script>

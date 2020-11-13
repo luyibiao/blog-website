@@ -9,4 +9,8 @@ export default {
   queryArticleDetail(data) {
     return axios.post('/article/queryArticleDetail', data)
   },
+  // 查询文章类型
+  queryArticleType(data) {
+    return axios.post('/article/queryArticleType', data)
+  }
 }

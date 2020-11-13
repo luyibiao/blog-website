@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'b-article',
   data() {
@@ -27,6 +28,9 @@ export default {
   },
   created() {
     this.getList()
+  },
+  computed: {
+    ...mapGetters(['getArticleType'])
   },
   methods: {
     getList() {
@@ -39,8 +43,14 @@ export default {
     },
     // 跳文章详情
     go(item) {
+      const code = this.$route.query.code
+      let name = '首页'
+      if (code) {
+        name = this.getArticleType.find(v => v.code === code).name
+      }
+      this.$store.commit('setCurrentTitle', name)
       this.$overall.setBreadcrumb({
-        prevUrl: this.$route.path,
+        prevUrl: code ? this.$route.path + '?code=' + code : this.$route.path ,
         currentTitle: item.title
       })
       this.$router.push({

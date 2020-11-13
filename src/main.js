@@ -58,8 +58,18 @@ router.beforeEach((to, from, next) => {
 
 window.$router = router
 
-window.$vue = new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+
+api.queryArticleType().then(res => {
+  store.commit('setArticleType', res.list)
+  window.$vue = new Vue({
+    router,
+    store,
+    render: h => h(App)
+  }).$mount('#app')
+}).catch(e => {
+  window.$vue = new Vue({
+    router,
+    store,
+    render: h => h(App)
+  }).$mount('#app')
+})

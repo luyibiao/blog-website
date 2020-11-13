@@ -9,5 +9,10 @@ export default {
     currentTitle: ''
   },
   // 记录当前页面标题
-  currentTitle: ''
+  currentTitle: '',
+  // 一级栏目code
+  pareneCode: '',
+
+  // 文章类型
+  articleType: []
 }

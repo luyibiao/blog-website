@@ -17,64 +17,56 @@
       <div class="home-header_nav-wraper">
         <div 
         class="home-header_nav-item"
-        v-for="(item, index) in menus"
+        v-for="(item, index) in getArticleType"
         @click="go(item)"
-        :class="currentValue === item.label && 'is-active'"
+        :class="currentValue === item.code && 'is-active'"
         :key="index">
           <span class="home-header_nav-inner">{{item.name}}</span>
         </div>
+        {{currentValue}}
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   components: {
   },
   data() {
     return {
-      currentValue: '',
-      menus: [{
-        name: '首页',
-        url: '/',
-        label: 'home'
-      }, {
-        name: '技术分享',
-        url: '/skill',
-        label: 'skill'
-      }, {
-        name: '心情随笔',
-        url: '/prose',
-        label: 'prose'
-      }, {
-        name: '书屋',
-        url: '/novel',
-        label: 'novel'
-      }, {
-        name: '关于我',
-        url: '/mine',
-        label: 'mine'
-      }, {
-        name: '留言~~',
-        url: '/contact',
-        label: 'contact'
-      }]
+      currentValue: 'HOME',
     }
+  },
+  computed: {
+    ...mapGetters(['getArticleType', 'getPareneCode'])
   },
   watch: {
     '$route'(v) {
-      this.currentValue = v.name
+      this.currentValue = v.query.code || this.getPareneCode || 'HOME'
     }
+  },
+  created() {
+    
   },
   methods: {
     go(v) {
-      if (this.currentValue === v.label) return
       this.$store.commit('setCurrentTitle', '首页' )
       this.$overall.setBreadcrumb({currentTitle: v.name})
       this.$router.push({
-        path: v.url
+        name: v.route_url,
+        query: {
+          code: v.code
+        }
       })
+
+      // if (this.currentValue === v.label) return
+      // this.$store.commit('setCurrentTitle', '首页' )
+      // this.$overall.setBreadcrumb({currentTitle: v.name})
+      // this.$router.push({
+      //   path: v.url
+      // })
     }
   },
 }
