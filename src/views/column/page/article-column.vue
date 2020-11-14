@@ -30,6 +30,7 @@ export default {
   methods: {
     init() {
       const instance = this.getArticleType.find(v => v.code === this.query.code) || {}
+      this.$store.commit('setPareneCode', this.query.code)
       this.$store.commit('setCurrentTitle', '首页')
       this.$overall.setBreadcrumb({currentTitle: instance.name})
       

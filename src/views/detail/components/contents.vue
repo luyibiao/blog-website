@@ -44,7 +44,7 @@
       </div>
     </div>
     <div class="content_inner">
-      <div v-html="detail.content"></div>
+      <div v-html="detail.content" class="ql-editor"></div>
       <!--打赏和点赞-->
       <div class="reward">
         <div class="reward-like">

@@ -19,11 +19,10 @@
         class="home-header_nav-item"
         v-for="(item, index) in getArticleType"
         @click="go(item)"
-        :class="currentValue === item.code && 'is-active'"
+        :class="getPareneCode === item.code && 'is-active'"
         :key="index">
           <span class="home-header_nav-inner">{{item.name}}</span>
         </div>
-        {{currentValue}}
       </div>
     </div>
   </div>
@@ -36,16 +35,14 @@ export default {
   },
   data() {
     return {
-      currentValue: 'HOME',
+      
     }
   },
   computed: {
     ...mapGetters(['getArticleType', 'getPareneCode'])
   },
   watch: {
-    '$route'(v) {
-      this.currentValue = v.query.code || this.getPareneCode || 'HOME'
-    }
+
   },
   created() {
     

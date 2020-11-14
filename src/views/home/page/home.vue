@@ -34,7 +34,7 @@
       <recommend-item 
       v-for="(item, index) in 3" 
       :key="index" 
-      :bg="recommendPng"
+      
       >
       </recommend-item>
     </recommend-list>
@@ -63,11 +63,11 @@
 </template>
 
 <script>
-import recommendPng from '@/assets/imgs/recommend.jpg'
+
 export default {
   data() {
     return {
-      recommendPng,
+      
       columnList: [],
       arr: [
         'primary',
@@ -81,6 +81,7 @@ export default {
   },
   created() {
     this.getBannerList()
+    this.$store.commit('setPareneCode', 'HOME')
     this.$store.commit('setCurrentTitle', '首页')
   },
   methods: {

@@ -8,16 +8,16 @@
         :isShowPag="false"
         :isShowBtn="false"
         :options="swiperOption">
-          <b-swiper-item v-for="(item, index) in 3" :key="index">
-            <img src="~@/assets/imgs/ban1.png" alt="" style="width: 100%"/>
+          <b-swiper-item v-for="(item, index) in list" :key="index">
+            <img :src="item.logo " alt="" style="width: 100%"/>
           </b-swiper-item>
         </b-swiper>
       </div>
 
       <div class="hot-article-info_list">
-        <div class="hot-article-info_item" v-for="(item, index) in 3" :key="index">
+        <div class="hot-article-info_item" v-for="(item, index) in list" :key="index" @click="go(item)">
           <span class="hot-article-info_inner">
-            比较完整的SEO方案
+            {{item.title}}
           </span>
         </div>
       </div>
@@ -38,7 +38,25 @@ export default {
           stopOnLastSlide: false,
           disableOnInteraction: true,
         },
-      }
+      },
+      list: []
+    }
+  },
+  created() {
+    this.getList()
+  },
+  methods: {
+    getList() {
+      this.$api.getArticleList({
+        pageSize: 3,
+        pageIndex: 0,
+        hot_comments: 1
+      }).then(res => {
+        this.list = res.list
+      })
+    },
+    go(item) {
+      this.$overall.goArticleDetail(item, this.$route.query.code)
     }
   },
 }

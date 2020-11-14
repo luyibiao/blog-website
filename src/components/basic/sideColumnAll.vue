@@ -21,7 +21,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getArticleType'])
+    ...mapGetters(['getArticleType', 'getPareneCode'])
   },
   data() {
     return {
@@ -36,7 +36,7 @@ export default {
   methods: {
     getColumnList() {
       let isExitColumn = false
-      const instance = this.getArticleType.find(v => v.code === this.query.code) || {}
+      const instance = this.getArticleType.find(v => v.code === this.getPareneCode) || {}
       if (instance.side_column) {
          const arr = instance.side_column.split(',')
          this.columnList = arr.reduce((acc, v, i) => this.$sideColumn[v] ? [...acc, ...this.$sideColumn[v]] : [], [])

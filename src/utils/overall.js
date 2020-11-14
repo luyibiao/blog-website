@@ -43,5 +43,22 @@ export default {
   randomHexColorCode: _ => {
     let n = (Math.random() * 0xfffff * 1000000).toString(16);
     return '#' + n.slice(0, 6);
+  },
+  goArticleDetail(item, code) {
+    let name = '首页'
+    if (code) {
+      name = window.store.state.articleType.find(v => v.code === code).name
+    }
+    window.store.commit('setCurrentTitle', name)
+    this.setBreadcrumb({
+      prevUrl: code ? window.$vue.$route.path + '?code=' + code : window.$vue.$route.path ,
+      currentTitle: item.title
+    })
+    window.$vue.$router.push({
+      name: 'article-detail',
+      query: {
+        id: item.id
+      }
+    })
   }
 }

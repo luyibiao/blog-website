@@ -23,7 +23,11 @@ export default {
   name: 'b-article',
   data() {
     return {
-      list: []
+      list: [],
+      type: '',
+      pageSize: 10,
+      pageIndex: 1,
+      total: 0,
     }
   },
   created() {
@@ -34,15 +38,27 @@ export default {
   },
   methods: {
     getList() {
+      const arr = [
+        'HOME'
+      ]
+      const code = this.$route.query.code
+      if (code && !arr.includes(code)) {
+        this.type = code
+      }
       const sendData = {
-        status: 'LINE'
+        type: this.type,
+        pageSize: this.pageSize,
+        pageIndex: this.pageIndex - 1,
       }
       this.$api.getArticleList(sendData).then(res => {
         this.list = res.list
+        this.total = res.total;
       })
     },
     // 跳文章详情
     go(item) {
+      this.$overall.goArticleDetail(item, this.$route.query.code)
+      return
       const code = this.$route.query.code
       let name = '首页'
       if (code) {
