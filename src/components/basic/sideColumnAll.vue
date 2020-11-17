@@ -1,7 +1,7 @@
 <template>
   <div class="components-sideColumnAll">
     <div v-for="(item, index) in columnList" :key="index">
-      <component :is="item.name"></component>
+      <component :is="item.name" :item="item"></component>
     </div>
   </div>
 </template>

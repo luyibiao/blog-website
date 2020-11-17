@@ -49,7 +49,7 @@
       <div class="reward">
         <div class="reward-like">
           <b-icon name="blog-xihuan2" size="18px" class="like-icon"/>
-          <span class="reward-inner">赞(88)</span>
+          <span class="reward-inner">赞({{detail.thumbs_num}})</span>
         </div>
         <div class="reward-r">
           <b-icon name="blog-meiyuanqian" size="18px"/>

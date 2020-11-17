@@ -9,7 +9,7 @@
         :isShowBtn="false"
         :options="swiperOption">
           <b-swiper-item v-for="(item, index) in list" :key="index">
-            <img :src="item.logo " alt="" style="width: 100%"/>
+            <img :src="item.logo || defaultImg" alt="" style="width: 100%" />
           </b-swiper-item>
         </b-swiper>
       </div>
@@ -30,6 +30,7 @@ export default {
   name: 'hot-article',
   data() {
     return {
+      defaultImg: require('@/assets/imgs/default-logo.jpg'),
       swiperOption: {
         speed: 1200,
         direction : 'vertical',
@@ -57,6 +58,9 @@ export default {
     },
     go(item) {
       this.$overall.goArticleDetail(item, this.$route.query.code)
+    },
+    error() {
+      console.log(1212)
     }
   },
 }

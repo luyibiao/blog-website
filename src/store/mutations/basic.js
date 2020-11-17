@@ -10,5 +10,8 @@ export default {
   },
   setPareneCode(state, val) {
     state.pareneCode = val
+  },
+  setMineInfo(state, val) {
+    state.mineInfo = val || {}
   }
 }

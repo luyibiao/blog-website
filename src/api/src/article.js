@@ -12,5 +12,9 @@ export default {
   // 查询文章类型
   queryArticleType(data) {
     return axios.post('/article/queryArticleType', data)
+  },
+  // 随便看看
+  queryRandowArticle(data) {
+    return axios.post('/article/queryRandowArticle', data)
   }
 }

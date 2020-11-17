@@ -29,12 +29,13 @@
       </template>
     </layout-wrap>
 
+
     <!--推荐-->
-    <recommend-list style="margin-top: 25px;">
+    <recommend-list style="margin-top: 25px;" v-if="recommendList.length">
       <recommend-item 
-      v-for="(item, index) in 3" 
+      v-for="(item, index) in recommendList" 
       :key="index" 
-      
+      :item="item"
       >
       </recommend-item>
     </recommend-list>
@@ -43,15 +44,6 @@
       <template>
         <!--文章列表-->
         <b-article />
-        <!-- <article-list>
-          <article-item v-for="(item, index) in 3 " :key="index">
-            <template #tags>
-              <tag v-for="(item, index) in 5" :key="index"
-                :type="arr[index]"
-              >生活</tag>
-            </template>
-          </article-item>
-        </article-list> -->
       </template>
       <template #right>
         <sideColumnAll 
@@ -76,18 +68,32 @@ export default {
         'danger',
         'success'
       ],
-      bannerList: []
+      bannerList: [],
+      recommendList: []
     }
   },
   created() {
     this.getBannerList()
     this.$store.commit('setPareneCode', 'HOME')
     this.$store.commit('setCurrentTitle', '首页')
+
+    this.getrRecommendList()
   },
   methods: {
     getBannerList() {
       this.$api.queryBaner().then(res => {
         this.bannerList = res.list
+      })
+    },
+    // 获取推荐列表
+    getrRecommendList() {
+      this.$api.getArticleList({
+        pageSize: 3,
+        pageIndex: 0,
+        recommend: 1,
+        timeType: 'update_time'
+      }).then(res => {
+        this.recommendList = res.list
       })
     }
   },

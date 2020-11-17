@@ -4,18 +4,33 @@
     <column-title>热门标签</column-title>
     <div class="components-hot-tags_list">
       <tag 
-      v-for="(item, index) in 20" 
+      v-for="(item, index) in list" 
       :key="index" 
       :isClickAble="true"
       size="mini"
-      >犹太人</tag>
+      >{{item.label}}</tag>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'hot-tags'
+  name: 'hot-tags',
+  data() {
+    return {
+      list: []
+    }
+  },
+  created() {
+    this.getList()
+  },
+  methods: {
+    getList() {
+      this.$api.queryHotLabel().then(res => {
+        this.list = res.list
+      })
+    }
+  },
 }
 </script>
 

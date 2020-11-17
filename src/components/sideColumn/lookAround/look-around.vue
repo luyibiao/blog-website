@@ -4,23 +4,23 @@
     <column-title>随便看看</column-title>
     <div class="look-around_wrap">
       <div class="look-around_wrap-top">
-        <img-mask :src="require('@/assets/imgs/haitan.jpg')">
+        <img-mask :src="instance.logo || defaultImg">
           <template #inner>
             <div class="look-around_wrap-top_inner">
-              <div class="date">2019-08-04</div>
-              <div class="title">八大中国最美外滩</div>
+              <div class="date">{{instance.create_time | formatDatetime('yyyy-MM-dd')}}</div>
+              <div class="title">{{instance.title}}</div>
             </div>
           </template>
         </img-mask>
       </div>
       <div class="look-around_list">
-        <div class="look-around_item" v-for="(item, index) in 3" :key="index">
+        <div class="look-around_item" v-for="(item, index) in list" :key="index">
           <div class="look-around_item_img">
-            <img src="~@/assets/imgs/haitan.jpg"/>
+            <img :src="item.logo || defaultImg"/>
           </div>
           <div class="look-around_item-inner">
-            <p class="title">比较完整的SEO方案</p>
-            <p class="date">2020-09-27</p>
+            <p class="title">{{item.title}}</p>
+            <p class="date">{{item.create_time | formatDatetime('yyyy-MM-dd')}}</p>
           </div>
         </div>
       </div>
@@ -30,7 +30,31 @@
 
 <script>
 export default {
-  name: 'look-around'  
+  name: 'look-around',
+  props: {
+    item: {
+      type: Object,
+      default: () => ({})
+    }
+  },
+  data() {
+    return {
+      list: [],
+      instance: {},
+      defaultImg: require('@/assets/imgs/default-logo.jpg')
+    }
+  },
+  created() {
+    this.getList()
+  },
+  methods: {
+    getList() {
+      this.$api.queryRandowArticle().then(res => {
+        this.instance = res.list[0] || {}
+        this.list = res.list.slice(1) || []
+      })
+    }
+  },
 }
 </script>
 
@@ -44,12 +68,8 @@ export default {
     margin-top: 30px;
     .look-around_wrap-top {
       position: relative;
+      height: 213px;
       .look-around_wrap-top_inner {
-        // position: absolute;
-        // bottom: 20px;
-        // color: #fff;
-        // left: 15px;
-        // right: 15px;
         .date {
           font-size: 12px;
           margin-bottom: 8px;

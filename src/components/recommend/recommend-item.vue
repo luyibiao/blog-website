@@ -1,10 +1,10 @@
 <template>
   <div class="recommend-item img-mask">
-    <img-mask :src="bg">
+    <img-mask :src="item.logo || defaultImg">
       <template #inner>
         <div class="recommend-item_inner-tag">
           <tag class="reset-tags">生活</tag>
-          <p class="recommend-item_inner-title">好舒服十多个开始的打暑假工接口接口辅导机构</p>
+          <p class="recommend-item_inner-title">{{item.title}}</p>
         </div>
       </template>
     </img-mask>
@@ -18,6 +18,10 @@ export default {
     bg: {
       type: String,
       default: ''
+    },
+    item: {
+      type: Object,
+      default: () => ({})
     }
   },
   computed: {
@@ -25,6 +29,11 @@ export default {
       return {
         backgroundImage: `url(${this.bg})`
       }
+    }
+  },
+  data() {
+    return {
+      defaultImg: require('@/assets/imgs/default-logo.jpg')
     }
   },
 }
@@ -35,6 +44,7 @@ export default {
   position: relative;
   flex: 1;
   height: 220px;
+  max-width: 33.3333%;
   cursor: pointer;
  
   .recommend-item_inner-tag {

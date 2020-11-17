@@ -14,5 +14,7 @@ export default {
   pareneCode: '',
 
   // 文章类型
-  articleType: []
+  articleType: [],
+  // 我的信息
+  mineInfo: {}
 }

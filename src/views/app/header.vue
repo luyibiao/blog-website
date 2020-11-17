@@ -5,7 +5,7 @@
        <img src="~@/assets/imgs/logo.png" alt="" class="blog-app_home-logo-inner"/>
      </div>
 
-     <p class="blog-app_home-logo-text">用代码改变世界~~</p>
+     <p class="blog-app_home-logo-text">{{getMineInfo.description}}</p>
 
      <div class="home-search_wraper">
        <input class="blog-app_home-input" placeholder="输入关键词搜索"/>
@@ -39,7 +39,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getArticleType', 'getPareneCode'])
+    ...mapGetters(['getArticleType', 'getPareneCode', 'getMineInfo'])
   },
   watch: {
 
@@ -89,7 +89,7 @@ export default {
       font-size: 15px;
       font-weight: bold;
       width: 320px;
-      line-height: 1.2;
+      line-height: 1.5;
     }
     .home-search_wraper {
       display: flex;

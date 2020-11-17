@@ -246,6 +246,7 @@ export default {
               font-size: 15px;
               color:  #333;
               line-height: 1.5;
+              margin-bottom: 10px;
             }
             .time {
               // margin-top: -3px;
