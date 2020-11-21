@@ -3,7 +3,7 @@
   <div class="look-around">
     <column-title>随便看看</column-title>
     <div class="look-around_wrap">
-      <div class="look-around_wrap-top">
+      <div class="look-around_wrap-top" @click="go(instance)">
         <img-mask :src="instance.logo || defaultImg">
           <template #inner>
             <div class="look-around_wrap-top_inner">
@@ -14,7 +14,7 @@
         </img-mask>
       </div>
       <div class="look-around_list">
-        <div class="look-around_item" v-for="(item, index) in list" :key="index">
+        <div class="look-around_item" v-for="(item, index) in list" :key="index" @click="go(item)">
           <div class="look-around_item_img">
             <img :src="item.logo || defaultImg"/>
           </div>
@@ -53,6 +53,9 @@ export default {
         this.instance = res.list[0] || {}
         this.list = res.list.slice(1) || []
       })
+    },
+    go(item) {
+      this.$overall.goArticleDetail(item, this.$route.query.code)
     }
   },
 }

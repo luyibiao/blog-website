@@ -8,7 +8,8 @@
       <comment></comment>
 
       <template #right>
-        <sideColumnAll />
+        <aboutme />
+        <contactme />
       </template>
     </layout-wrap>
   </div>
@@ -29,16 +30,24 @@ export default {
     }
   },
   created() {
+    this.query = this.$route.query
+    // 观看数上报
+    this.setWatchNum()
     this.getDetail()
     // this.$store.commit('setCurrentTitle', 131)
   },
   methods: {
     getDetail() {
-      this.query = this.$route.query
       this.$api.queryArticleDetail({id: this.query.id}).then(res => {
         this.detail = res
         this.$store.commit('setPareneCode', res.type)
+        
       })
+    },
+    setWatchNum() {
+      this.$api.setWatchNum({
+        article_id: this.query.id
+      }).then()
     }
   },
 }

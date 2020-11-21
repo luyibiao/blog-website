@@ -14,6 +14,16 @@
     </article-list>
 
     <!--分页-->
+    <div class="pagination-box">
+      <el-pagination
+        background
+        @size-change="getList(pageIndex = 1)"
+        @current-change="currentChange"
+        :page-size.sync="pageSize"
+        layout="total, prev, pager, next, jumper"
+        :total="total"
+        class="pagination" />
+    </div>
   </div>
 </template>
 
@@ -55,6 +65,10 @@ export default {
         this.total = res.total;
       })
     },
+    currentChange(v) {
+      this.pageIndex = v
+      this.getList()
+    },
     // 跳文章详情
     go(item) {
       this.$overall.goArticleDetail(item, this.$route.query.code)
@@ -79,3 +93,15 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+  .components-artilce {
+    .pagination-box {
+      margin-top: 20px;
+      background: rgba($color: #fff, $alpha: .4);
+      padding: 20px 0;
+      box-sizing: border-box;
+      text-align: center;
+    }
+  }
+</style>

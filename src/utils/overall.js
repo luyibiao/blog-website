@@ -60,5 +60,12 @@ export default {
         id: item.id
       }
     })
+  },
+
+  // 分割名字第一个字符串
+  splitName(val) {
+    if (!val) return ''
+    if (val.length === 1) return val
+    return val.split('')[0]
   }
 }

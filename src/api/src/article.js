@@ -16,5 +16,13 @@ export default {
   // 随便看看
   queryRandowArticle(data) {
     return axios.post('/article/queryRandowArticle', data)
+  },
+  // 查询文章子类型
+  queryArticleChildType(data) {
+    return axios.post('/article/queryArticleChildType', data)
+  },
+  // 设置观看数
+  setWatchNum(data) {
+    return axios.post('/article/setWatchNum', data)
   }
 }

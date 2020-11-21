@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  name: 'components-contactme',
+  name: 'contactme',
   data() {
     return {
       list: [{

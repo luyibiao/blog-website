@@ -22,7 +22,7 @@
             <b-icon name="blog-riqi" size="15px" class="article-item_content_info-icon"/>
           </span>
           <span class="info-item-_inner">
-            {{detail.type}}
+            {{getType() || typeName}}
           </span>
         </div>
         <!--日期-->
@@ -46,16 +46,16 @@
     <div class="content_inner">
       <div v-html="detail.content" class="ql-editor"></div>
       <!--打赏和点赞-->
-      <div class="reward">
+      <!-- <div class="reward">
         <div class="reward-like">
           <b-icon name="blog-xihuan2" size="18px" class="like-icon"/>
           <span class="reward-inner">赞({{detail.thumbs_num}})</span>
         </div>
         <div class="reward-r">
           <b-icon name="blog-meiyuanqian" size="18px"/>
-          <!-- <span class="reward-inner"></span> -->
+          <span class="reward-inner"></span>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <!--上一篇下一篇-->
@@ -81,6 +81,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   props: {
     detail: {
@@ -88,17 +89,30 @@ export default {
       default: () => ({})
     }
   },
+  computed: {
+    ...mapGetters(['getArticleType'])
+  },
   data() {
     return {
       query: {},
-      
+      typeName: ''
     }
   },
   created() {
    
   },
   methods: {
-    
+    getType() {
+      if (!this.detail.child_type) {
+        this.typeName = this.detail.type ? this.$vueFilters.formatStatus(this.detail.type, this.getArticleType) : ''
+      } else {
+        const info = this.$api.queryArticleChildType({
+          code: this.detail.child_type
+        }).then(res => {
+          this.typeName = res.name
+        })
+      }
+    }
   },
 }
 </script>
@@ -169,17 +183,20 @@ export default {
         align-items: center;
         margin-top: 100px;
         .reward-like {
-          color: #F74840;
+          color: #748594;
           display: flex;
           align-items: center;
-          border: 1px solid #F74840;
+          border: 1px solid #748594;
           padding: 5px 8px;
           cursor: pointer;
           position:relative;
           user-select: none;
           .like-icon {
-            animation: rewardlike 3s;
-            animation-iteration-count: infinite;
+            
+          }
+          &.reward-like-active {
+            color: #F74840;
+            border-color:#F74840;
           }
         }
         .reward-r {

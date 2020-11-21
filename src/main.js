@@ -12,7 +12,7 @@ import VueParticles from 'vue-particles'
 import api from '@/api'
 import vueFilters from '@/filters/filters.js'
 
-import { Message, Loading, Dialog, Input } from 'element-ui';
+import { Message, Loading, Dialog, Input, Pagination } from 'element-ui';
 
 // import Vue2Emoji from 'vuejs-emoji'
 // Vue.use(Vue2Emoji)
@@ -27,6 +27,7 @@ Vue.use(Loading.directive);
 
 Vue.use(Dialog);
 Vue.use(Input);
+Vue.use(Pagination)
 
 Vue.prototype.$loading = Loading.service;
 Vue.prototype.$message = Message
@@ -47,6 +48,7 @@ Vue.mixin({
 Vue.config.productionTip = false
 
 Vue.prototype.$overall = overall
+Vue.prototype.$vueFilters = vueFilters
 Vue.prototype.$api = api
 
 // 路由守卫
