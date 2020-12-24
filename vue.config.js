@@ -1,4 +1,6 @@
 
+const getIPAdress = require('./src/utils/getIp')
+
 const scss = `
 @import "~@/assets/scss/variable.scss";
 @import "~@/assets/scss/mixin.scss";
@@ -20,7 +22,7 @@ devServer: {
   // open: true, //配置自动启动浏览器
   proxy: { // 配置跨域
     '/api': {
-        target: 'http://192.168.10.105:3000',
+        target: 'http://192.168.100.169:3000',
         ws: true,
         changOrigin: true,
         pathRewrite: {
