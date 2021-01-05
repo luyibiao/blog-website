@@ -5,13 +5,27 @@ const scss = `
 @import "~@/assets/scss/variable.scss";
 @import "~@/assets/scss/mixin.scss";
 `
-
+const CompressionPlugin = require('compression-webpack-plugin')
 module.exports = {
   publicPath: '/blog/',
+  productionSourceMap: false, // 不要map文件
   css: {
     loaderOptions: {
       scss: {
         prependData: scss
+      }
+    }
+  },
+  configureWebpack: config => {
+    if (process.env.NODE_ENV === 'production' ) {
+      return {
+        plugins: [
+          new CompressionPlugin({
+            test: /\.js$|\.html$|\.css$/,
+            threshold: 10240,
+            deleteOriginalAssets: false
+          })
+        ]
       }
     }
   },

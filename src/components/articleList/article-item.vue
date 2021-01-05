@@ -45,7 +45,7 @@
       <div class="article-item_content_info-item">
         <span>
           <b-icon name="blog-pinglun1" size="15px" />
-          <span class="info-item-_inner">{{item.comment_num}}</span>
+          <span class="info-item-_inner">{{count}}</span>
         </span>
       </div>
     </div>
@@ -64,11 +64,13 @@ export default {
   },
   data() {
     return {
-      imgs: []
+      imgs: [],
+      count: 0
     }
   },
   created() {
     this.getImgs()
+    this.getCommontEnts()
     // this.imgs = 
   },
   methods: {
@@ -79,6 +81,13 @@ export default {
       var arr = str.match(imgReg);  // arr 为包含所有img标签的数组
       this.imgs = arr
     },
+    getCommontEnts() {
+      this.$api.queryCommonetCount({
+        id: this.item.id
+      }).then(res => {
+        this.count = res.count
+      })
+    }
   },
 }
 </script>
