@@ -4,7 +4,7 @@
       <template>
         <div class="home-wrap">
           <b-swiper>
-            <b-swiper-item v-for="(item, index) in bannerList" :key="index">
+            <b-swiper-item v-for="(item, index) in bannerList" :key="index" @click.native="toRoute(item)">
               <div class="home-wrap-swiper">
                 <img :src="item.imgUrl" alt="" style="width: 100%"/>
                 <!--本地文章跳转显示标题标签-->
@@ -12,7 +12,6 @@
                   <div class="home-wrap-swiper_info">
                     <div>
                       <labels :label="item.label" customClasses="reset-tags">
-                      <tag class="reset-tags">推荐</tag>
                       </labels>
                     </div>
                     <h2 class="title">{{item.article_title}}</h2>
@@ -95,6 +94,18 @@ export default {
       }).then(res => {
         this.recommendList = res.list
       })
+    },
+    toRoute(item) {
+      if (item.type == 1) {
+        this.$router.push({
+          name: 'article-detail',
+          query: {
+            id: item.article_id
+          }
+        })
+      } else {
+        window.location.href = item.url
+      }
     }
   },
 }

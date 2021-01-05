@@ -14,6 +14,10 @@ import vueFilters from '@/filters/filters.js'
 
 import { Message, Loading, Dialog, Input, Pagination } from 'element-ui';
 
+import 'quill/dist/quill.core.css';
+import 'quill/dist/quill.snow.css';
+import 'quill/dist/quill.bubble.css';
+
 // import Vue2Emoji from 'vuejs-emoji'
 // Vue.use(Vue2Emoji)
 
@@ -53,7 +57,7 @@ Vue.prototype.$api = api
 
 // 路由守卫
 router.beforeEach((to, from, next) => {
- 
+  document.body.scrollTop = 0
   document.title = to.meta.title
   next()
 })

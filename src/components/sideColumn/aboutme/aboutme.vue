@@ -4,16 +4,16 @@
     <column-title>关于我</column-title>
     <div class="components-aboutme_content">
       <div class="bg">
-        <img :src="info.avatar" alt="" />
+        <img :src="getMineInfo.avatar" alt="" />
       </div>
       <div style="height: 0">
         <div class="header-img">
-          <img :src="info.avatar" alt="" />
+          <img :src="getMineInfo.avatar" alt="" />
         </div>
       </div>
       <div class="components-aboutme_content-info">
         <div class="inner">
-          {{info.profile}}
+          {{getMineInfo.profile}}
         </div>
       </div>
     </div>
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'aboutme',
   data() {
@@ -29,18 +30,14 @@ export default {
       isRequest: false
     }
   },
+  computed: {
+    ...mapGetters(['getMineInfo'])
+  },
   created() {
-    this.getDetail()
+    
   },
   methods: {
-    getDetail() {
-      if (this.isRequest) return
-      this.$api.queryMineInfo().then(res => {
-        this.info = res
-        this.$store.commit('setMineInfo', this.info)
-        this.isRequest = true
-      })
-    }
+    
   },
 }
 </script>

@@ -1,9 +1,9 @@
 <template>
-  <div class="recommend-item img-mask">
+  <div class="recommend-item img-mask" @click="go">
     <img-mask :src="item.logo || defaultImg">
       <template #inner>
         <div class="recommend-item_inner-tag">
-          <tag class="reset-tags">生活</tag>
+          <labels :label="item.label" customClasses="reset-tags" />
           <p class="recommend-item_inner-title">{{item.title}}</p>
         </div>
       </template>
@@ -34,6 +34,16 @@ export default {
   data() {
     return {
       defaultImg: require('@/assets/imgs/default-logo.jpg')
+    }
+  },
+  methods: {
+    go() {
+      this.$router.push({
+        name: 'article-detail',
+        query: {
+          id: this.item.id
+        }
+      })
     }
   },
 }
