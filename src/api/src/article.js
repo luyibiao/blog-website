@@ -24,5 +24,13 @@ export default {
   // 设置观看数
   setWatchNum(data) {
     return axios.post('/article/setWatchNum', data)
+  },
+  // 查询上一条
+  queryUpArticle(data) {
+    return axios.post('/article/queryUpArticle', data)
+  },
+  // 查询下一条
+  queryNextArticle(data) {
+    return axios.post('/article/queryNextArticle', data)
   }
 }

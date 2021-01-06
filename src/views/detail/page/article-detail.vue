@@ -3,7 +3,7 @@
     <layout-wrap>
       <breadcrumb-basic />
       <!--文章内容-->
-      <contents :detail="detail"></contents>
+      <contents :detail="detail" ></contents>
       <!--评论-->
       <comment></comment>
 
@@ -18,6 +18,7 @@
 <script>
 import contents from '../components/contents'
 import comment from '../components/comment'
+import { mapGetters } from 'vuex'
 export default {
   components: {
     contents,
@@ -28,6 +29,9 @@ export default {
       detail: {},
       query: {}
     }
+  },
+  computed: {
+    ...mapGetters(['getArticleType'])
   },
   created() {
     this.query = this.$route.query
@@ -40,6 +44,7 @@ export default {
     getDetail() {
       this.$api.queryArticleDetail({id: this.query.id}).then(res => {
         this.detail = res
+        this.$store.commit('setCurrentTitle', this.$vueFilters.formatStatus(this.detail.type, this.getArticleType))
         this.$store.commit('setPareneCode', res.type)
         
       })

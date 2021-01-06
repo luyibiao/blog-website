@@ -60,19 +60,19 @@
 
     <!--上一篇下一篇-->
     <div class="about-article">
-      <img-mask :src="require('@/assets/imgs/haitan.jpg')">
+      <img-mask :src="upArticleInfo.logo" v-if="$overall.objectsEmpty(upArticleInfo)" @click.native="clickArticle(upArticleInfo)">
         <template #inner>
           <div class="about-article-tag">
-            <tag class="reset-tags">生活</tag>
-            <p class="about-article-title">上一篇：好舒服十多个开始的打暑假工接口接口辅导机构</p>
+            <labels :label="upArticleInfo.label" customClasses="reset-tags" />
+            <p class="about-article-title">上一篇：{{upArticleInfo.title}}</p>
           </div>
         </template>
       </img-mask>
-      <img-mask :src="require('@/assets/imgs/haitan.jpg')">
+      <img-mask :src="nextArticleInfo.logo" v-if="$overall.objectsEmpty(nextArticleInfo)" @click.native="clickArticle(nextArticleInfo)">
         <template #inner>
           <div class="about-article-tag">
-            <tag class="reset-tags">生活</tag>
-            <p class="about-article-title">下一篇：好舒服十多个开始的打暑假工接口接口辅导机构</p>
+            <labels :label="nextArticleInfo.label" customClasses="reset-tags" />
+            <p class="about-article-title">下一篇：{{nextArticleInfo.title}}</p>
           </div>
         </template>
       </img-mask>
@@ -90,16 +90,20 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getArticleType'])
+    ...mapGetters(['getArticleType', 'getBreadcrumbInfo'])
   },
   data() {
     return {
       query: {},
-      typeName: ''
+      typeName: '',
+      upArticleInfo: {},
+      nextArticleInfo: {}
     }
   },
   created() {
-   
+    this.query = this.$route.query
+    this.queryNextArticle()
+    this.queryUpArticle()
   },
   methods: {
     getType() {
@@ -112,6 +116,27 @@ export default {
           this.typeName = res.name
         })
       }
+    },
+
+    // 上一条
+    queryUpArticle() {
+      this.$api.queryUpArticle({
+        id: this.query.id
+      }).then(res => {
+        this.upArticleInfo = res
+      })
+    },
+    // 下一条
+    queryNextArticle() {
+      this.$api.queryNextArticle({
+        id: this.query.id
+      }).then(res => {
+        this.nextArticleInfo = res
+      })
+    },
+
+    clickArticle(item) {
+      this.$overall.goArticleDetail(item, '', this.getBreadcrumbInfo.prevUrl)
     }
   },
 }

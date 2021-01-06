@@ -38,20 +38,27 @@ export default {
   },
   // 判断是否为对象
   isObject: val => Object.prototype.toString.call(val).slice(8, -1) === 'Object',
+  //  是否为空对象
+  objectsEmpty: (val, isEnumerable = false) =>
+    !!(Object.prototype.toString.call(val) === '[object Object]' ?
+    isEnumerable ?
+    Reflect.ownKeys(val) :
+    Object.keys(val).length :
+    false),
 
   // 随机十六进制颜色
   randomHexColorCode: _ => {
     let n = (Math.random() * 0xfffff * 1000000).toString(16);
     return '#' + n.slice(0, 6);
   },
-  goArticleDetail(item, code) {
+  goArticleDetail(item, code, prevUrl) {
     let name = '首页'
     if (code) {
       name = window.store.state.articleType.find(v => v.code === code).name
     }
     window.store.commit('setCurrentTitle', name)
     this.setBreadcrumb({
-      prevUrl: code ? window.$vue.$route.path + '?code=' + code : window.$vue.$route.path ,
+      prevUrl: prevUrl ? prevUrl : code ? window.$vue.$route.path + '?code=' + code : window.$vue.$route.path ,
       currentTitle: item.title
     })
     window.$vue.$router.push({

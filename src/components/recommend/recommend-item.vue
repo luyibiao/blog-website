@@ -38,12 +38,7 @@ export default {
   },
   methods: {
     go() {
-      this.$router.push({
-        name: 'article-detail',
-        query: {
-          id: this.item.id
-        }
-      })
+      this.$overall.goArticleDetail(this.item, this.$route.query.code)
     }
   },
 }

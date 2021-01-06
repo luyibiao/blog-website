@@ -30,14 +30,16 @@
 
 
     <!--推荐-->
-    <recommend-list style="margin-top: 25px;" v-if="recommendList.length">
-      <recommend-item 
-      v-for="(item, index) in recommendList" 
-      :key="index" 
-      :item="item"
-      >
-      </recommend-item>
-    </recommend-list>
+    <transition appear name="home-recommend">
+      <recommend-list style="margin-top: 25px;" v-if="recommendList.length">
+        <recommend-item 
+        v-for="(item, index) in recommendList" 
+        :key="index" 
+        :item="item"
+        >
+        </recommend-item>
+      </recommend-list>
+    </transition>
 
     <layout-wrap class="home-content">
       <template>
@@ -97,12 +99,7 @@ export default {
     },
     toRoute(item) {
       if (item.type == 1) {
-        this.$router.push({
-          name: 'article-detail',
-          query: {
-            id: item.article_id
-          }
-        })
+        this.$overall.goArticleDetail(item, this.$route.query.code)
       } else {
         window.location.href = item.url
       }
@@ -140,5 +137,15 @@ export default {
   .home-content {
     // margin-top: 35px;
   }
+  .home-recommend {
+    &-enter-active, &-leave-active {
+      transition: all 1s;
+    }
+    &-enter, &-leave-to {
+      transform: rotateY(180deg);
+      opacity: 0;
+    }
+  }
 }
+
 </style>

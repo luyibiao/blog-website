@@ -1,56 +1,58 @@
 <template>
-  <div class="components-article-item">
-    <div class="article-item_tags" v-if="$slots.tags">
-      <slot name="tags"></slot>
-    </div>
-    <div class="article-item_content">
-      <p class="article-item_content-title">
-        <slot name="title">{{item.title}}</slot>
-      </p>
-      <div class="article-item_content-imgs" v-if="imgs && imgs.length">
-        <span v-html="i" v-for="(i, c) in imgs" :key="c"></span>
-        <!-- <img :src="require(`@/assets/imgs/a-test${index + 1}.png`)" v-for="(item, index) in 2" :key="index"/> -->
+  <transition appear name="components-article-item">
+    <div class="components-article-item">
+      <div class="article-item_tags" v-if="$slots.tags">
+        <slot name="tags"></slot>
+      </div>
+      <div class="article-item_content">
+        <p class="article-item_content-title">
+          <slot name="title">{{item.title}}</slot>
+        </p>
+        <div class="article-item_content-imgs" v-if="imgs && imgs.length">
+          <span v-html="i" v-for="(i, c) in imgs" :key="c"></span>
+          <!-- <img :src="require(`@/assets/imgs/a-test${index + 1}.png`)" v-for="(item, index) in 2" :key="index"/> -->
+        </div>
+
+        <div class="article-item_content_inner">
+          {{item.contentdesc}}
+        </div>
       </div>
 
-      <div class="article-item_content_inner">
-        {{item.contentdesc}}
+      <div class="article-item_content_info">
+        <!--作者-->
+        <div class="article-item_content_info-item">
+          <span >
+            <b-icon name="blog-touxiang" size="25px"/>
+          </span>
+          <span class="info-item-_inner">{{item.author}}</span>
+        </div>
+        <!--日期-->
+        <div class="article-item_content_info-item">
+          <span>
+            <b-icon name="blog-riqi" size="15px" class="article-item_content_info-icon"/>
+          </span>
+          <span class="info-item-_inner">
+            {{item.create_time | formatDatetime('yyyy-MM-dd')}}
+          </span>
+        </div>
+        <!--观看数-->
+        <div class="article-item_content_info-item">
+          <span>
+            <b-icon name="blog-guankanyanjing" size="22px"/>
+          </span>
+          <span class="info-item-_inner">{{item.watch_num}}</span>
+        </div>
+        <!--评论数-->
+        <div class="article-item_content_info-item">
+          <span>
+            <b-icon name="blog-pinglun1" size="15px" />
+            <span class="info-item-_inner">{{count}}</span>
+          </span>
+        </div>
       </div>
+      
     </div>
-
-    <div class="article-item_content_info">
-      <!--作者-->
-      <div class="article-item_content_info-item">
-        <span >
-          <b-icon name="blog-touxiang" size="25px"/>
-        </span>
-        <span class="info-item-_inner">{{item.author}}</span>
-      </div>
-      <!--日期-->
-      <div class="article-item_content_info-item">
-        <span>
-          <b-icon name="blog-riqi" size="15px" class="article-item_content_info-icon"/>
-        </span>
-        <span class="info-item-_inner">
-          {{item.create_time | formatDatetime('yyyy-MM-dd')}}
-        </span>
-      </div>
-      <!--观看数-->
-      <div class="article-item_content_info-item">
-        <span>
-          <b-icon name="blog-guankanyanjing" size="22px"/>
-        </span>
-        <span class="info-item-_inner">{{item.watch_num}}</span>
-      </div>
-      <!--评论数-->
-      <div class="article-item_content_info-item">
-        <span>
-          <b-icon name="blog-pinglun1" size="15px" />
-          <span class="info-item-_inner">{{count}}</span>
-        </span>
-      </div>
-    </div>
-    
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -140,6 +142,13 @@ export default {
         // margin-right: 5px;
       }
     }
+  }
+  &-enter-active, &-leave-active {
+    transition: all 1s;
+  }
+  &-enter, &-leave-to {
+    transform: translateX(-100%);
+    opacity: 0;
   }
 }
 
