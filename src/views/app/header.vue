@@ -8,8 +8,17 @@
      <p class="blog-app_home-logo-text">{{getMineInfo.description}}</p>
 
      <div class="home-search_wraper">
-       <input class="blog-app_home-input" placeholder="输入关键词搜索"/>
-       <button class="home-search-btn">搜索</button>
+       <musics v-model="showMusic" @playing="playing" @paused="paused"/>
+       <span class="home-search_wraper_inner" @click="onMusic">
+         <musicrunes v-if="isplays"/>
+         <b-icon name="blog-laba" size="20" color="#748594" v-else/>
+       </span>
+       <span class="home-search_wraper_line"></span>
+       <span class="home-search_wraper_inner" @click="onSearch">
+         <b-icon name="blog-sousuo" size="25" color="#748594"/>
+       </span>
+       <!-- <input class="blog-app_home-input" placeholder="输入关键词搜索"/>
+       <button class="home-search-btn">搜索</button> -->
      </div>
    </div>
 
@@ -30,12 +39,18 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import searchs from './components/search'
+import musics from './components/music'
+import musicrunes from './components/musicrunes'
 export default {
   components: {
+    musics,
+    musicrunes
   },
   data() {
     return {
-      
+      showMusic: false,
+      isplays: false
     }
   },
   computed: {
@@ -64,6 +79,18 @@ export default {
       // this.$router.push({
       //   path: v.url
       // })
+    },
+    playing() {
+      this.isplays = true
+    },
+    paused() {
+      this.isplays = false
+    },
+    onMusic() {
+      this.showMusic = !this.showMusic
+    },
+    onSearch() {
+      this.$popup(searchs)
     }
   },
 }
@@ -93,6 +120,17 @@ export default {
     }
     .home-search_wraper {
       display: flex;
+      align-items: center;
+      position: relative;
+      .home-search_wraper_inner {
+        cursor: pointer;
+      }
+      .home-search_wraper_line {
+        width: 2px;
+        height: 20px;
+        margin: 0 10px;
+        background: #748594;
+      }
       .blog-app_home-input {
         outline: none;
         border: none;

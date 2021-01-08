@@ -3,14 +3,22 @@
   <div class="components-hot-comments">
     <column-title>网易云热评</column-title>
     <div class="components-hot-comments_content">
-      走不通的路就回头，爱而不得的人就放手，得不到回应的热情就适可而止，别把一厢情愿当成满腔孤勇，也别把厌倦当成欲擒故纵。
+      {{getCurrentMusicInfo.content}}
+      <p class="author">
+        <span class="line"></span>
+        {{getCurrentMusicInfo.name}}
+      </p>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
-  name: 'hot-comments'
+  name: 'hot-comments',
+  computed: {
+    ...mapGetters(['getCurrentMusicInfo'])
+  },
 }
 </script>
 
@@ -26,6 +34,19 @@ export default {
     font-size: 14px;
     color: #666;
     letter-spacing: 1px;
+    .author {
+      display: flex;
+      align-items: center;
+      color: #333;
+      font-weight: bold;
+      justify-content: flex-end;
+      margin-top: 10px;
+    }
+    .line {
+      flex-basis: 50px;
+      height: 1px;
+      background: #333;
+    }
     // color: #748594;
   }
 }

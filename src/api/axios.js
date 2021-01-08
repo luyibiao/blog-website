@@ -29,10 +29,9 @@ instance.interceptors.response.use((response) => {
     return response
   } else {
     switchType(data.code, response.data)
-    return response
   }
 }, (err) => {
-  console.log(err)
+    return Promise.reject(err)
 });
 
 
@@ -49,18 +48,17 @@ function switchType(code, data) {
     default:
       break;
   }
+  return Promise.reject(data)
 }
 
 
 export default {
   post(url, params) {
-    return new Promise((resolve, reject) => {
-      instance.post(appendApi + url, params).then(result => {
-        const {data} = result
-        data.code === '1' ? resolve(data.data) : reject(data)
-      }).catch(e => {
-        reject(e)
-      })
+    return instance.post(appendApi + url, params).then(result => {
+      const { data } = result
+      return data.data
+    }).catch(e => {
+      return e
     })
   },
 }

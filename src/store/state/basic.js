@@ -16,5 +16,7 @@ export default {
   // 文章类型
   articleType: [],
   // 我的信息
-  mineInfo: {}
+  mineInfo: {},
+  // 当前播放歌曲信息
+  currentMusicInfo: {}
 }

@@ -12,5 +12,9 @@ export default {
   // 查询关于我
   queryMineInfo() {
     return axios.post('/home/queryMineInfo')
+  },
+  // 歌曲
+  queryWYYmusic() {
+    return axios.post('/home/queryWYYmusic')
   }
 }

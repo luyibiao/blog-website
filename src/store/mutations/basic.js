@@ -13,5 +13,8 @@ export default {
   },
   setMineInfo(state, val) {
     state.mineInfo = val || {}
+  },
+  setCurrentMusicInfo(state, val) {
+    state.currentMusicInfo = val
   }
 }

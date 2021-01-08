@@ -3,5 +3,6 @@ export default {
   getCurrentTitle: state => state.currentTitle,
   getArticleType: state => state.articleType,
   getPareneCode: state => state.pareneCode,
-  getMineInfo: state => state.mineInfo
+  getMineInfo: state => state.mineInfo,
+  getCurrentMusicInfo: state => state.currentMusicInfo
 }
