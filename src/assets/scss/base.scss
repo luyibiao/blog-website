@@ -352,6 +352,11 @@ a:hover {
 .ql-editor {
     padding-left: 0 !important;
     padding-right: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+.ql-container.ql-snow {
+    border: none;
 }
 
 // /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/

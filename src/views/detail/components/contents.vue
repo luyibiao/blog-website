@@ -43,7 +43,7 @@
         </div>
       </div>
     </div>
-    <div class="content_inner">
+    <div class="content_inner ql-container ql-snow">
       <div v-html="detail.content" class="ql-editor"></div>
       <!--打赏和点赞-->
       <div class="reward">
