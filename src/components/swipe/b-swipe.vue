@@ -40,7 +40,6 @@ export default {
     return {
       swiperOption: {
         speed: 2000,
-        grabCursor : true,
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',

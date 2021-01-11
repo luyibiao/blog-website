@@ -46,16 +46,16 @@
     <div class="content_inner">
       <div v-html="detail.content" class="ql-editor"></div>
       <!--打赏和点赞-->
-      <!-- <div class="reward">
+      <div class="reward">
         <div class="reward-like">
           <b-icon name="blog-xihuan2" size="18px" class="like-icon"/>
           <span class="reward-inner">赞({{detail.thumbs_num}})</span>
         </div>
-        <div class="reward-r">
-          <b-icon name="blog-meiyuanqian" size="18px"/>
+        <div class="reward-r" ref="share" @click="onShare">
+          <b-icon name="blog-fenxiang1" size="18px"/>
           <span class="reward-inner"></span>
         </div>
-      </div> -->
+      </div>
     </div>
 
     <!--上一篇下一篇-->
@@ -77,12 +77,21 @@
         </template>
       </img-mask>
     </div>
+
+    <template >
+      <share ref="shareInner" v-show="isShareShow"/>
+    </template>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import Popper from 'v-poppers'
+import share from './share'
 export default {
+  components: {
+    share
+  },
   props: {
     detail: {
       type: Object,
@@ -97,7 +106,15 @@ export default {
       query: {},
       typeName: '',
       upArticleInfo: {},
-      nextArticleInfo: {}
+      nextArticleInfo: {},
+      s: null,
+      options: {
+        isAppendParentNode: true,
+        offset: {
+          y: 10
+        }
+      },
+      isShareShow: false
     }
   },
   created() {
@@ -105,7 +122,17 @@ export default {
     this.queryNextArticle()
     this.queryUpArticle()
   },
+  mounted() {
+    this.s = new Popper(this.$refs.shareInner.$el, this.$refs.share, this.options)
+    console.log(this.s)
+  },
   methods: {
+    onShare() {
+      this.isShareShow = !this.isShareShow
+      this.$nextTick(_ => {
+        this.s.show()
+      })
+    },
     getType() {
       if (!this.detail.child_type) {
         this.typeName = this.detail.type ? this.$vueFilters.formatStatus(this.detail.type, this.getArticleType) : ''
@@ -202,6 +229,11 @@ export default {
 
     .content_inner {
       padding: 35px 0 0;
+      .ql-editor {
+        img {
+          max-width: 100%;
+        }
+      }
       .reward {
         display: flex;
         justify-content: center;

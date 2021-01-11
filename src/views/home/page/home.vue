@@ -101,7 +101,7 @@ export default {
       if (item.type == 1) {
         this.$overall.goArticleDetail(item, this.$route.query.code)
       } else {
-        window.location.href = item.url
+        window.open(item.url, '_blank')
       }
     }
   },

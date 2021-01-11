@@ -2,9 +2,16 @@
   <div class="article-detail-comment">
     <column-title class="title">评论一下</column-title>
     <div class="is-login">
-      <p>没有登录过？
-        <span @click="register" class="register-btn">立即登录</span>
-      </p>
+      <template v-if="isLogin">
+        <p>已登录，{{userInfo.userName}}
+          <span @click="register" class="register-btn">重新登录</span>
+        </p>
+      </template>
+      <template v-else>
+        <p>没有登录过？
+          <span @click="register" class="register-btn">立即登录</span>
+        </p>
+      </template>
     </div>
 
     <div class="article-detail-comment_inner">
@@ -39,6 +46,8 @@ export default {
       pageSize: 10,
       pageIndex: 1,
       total: 0,
+      isLogin: false,
+      userInfo: {}
     }
   },
   computed: {
@@ -47,8 +56,13 @@ export default {
   created() {
     this.query = this.$route.query
     this.getList()
+    this.checkUser()
   },
   methods: {
+    checkUser() {
+      this.userInfo = storage.getCache('userInfo')
+      this.isLogin = !!storage.getCache('userInfo')
+    },
     getList() {
       const sendData = {
         article_id: this.query.id,
@@ -60,7 +74,9 @@ export default {
       })
     },
     register() {
-      this.$popup(registers)
+      this.$popup(registers).then(res => {
+        this.checkUser()
+      })
     },
     submit(info) {
       const sendData = {

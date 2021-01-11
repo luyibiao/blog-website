@@ -80,8 +80,12 @@ export default {
       var str = this.item.content
       var imgReg = /<img.*?(?:>|\/>)/gi;
       var srcReg = /src=[\'\"]?([^\'\"]*)[\'\"]?/i;
-      var arr = str.match(imgReg);  // arr 为包含所有img标签的数组
-      this.imgs = arr
+      var arr = str.match(imgReg) || [];  // arr 为包含所有img标签的数组
+      if (arr.length <= 5) {
+        this.imgs = arr
+      } else {
+        this.imgs = arr.slice(0 ,5)
+      }
     },
     getCommontEnts() {
       this.$api.queryCommonetCount({

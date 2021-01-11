@@ -7,12 +7,15 @@
     <div class="my-router">
       <my-router class="my-route-wraper"/>
     </div>
+
+    <footers />
   </div>
 </template>
 
 <script>
 import myHeader from './header.vue';
 import myRouter from './router';
+import footers from './footer'
 
 export default {
   name: 'home',
@@ -25,6 +28,7 @@ export default {
   components: {
     myHeader,
     myRouter,    
+    footers
   },
   watch: {
     
@@ -39,7 +43,7 @@ export default {
   .my-router {
     width: 1200px;
     margin: 10px auto 0;
-    padding-bottom: 170px;
+    padding-bottom: 120px;
     .my-route-wraper {
       display: block;
       width: 100%;

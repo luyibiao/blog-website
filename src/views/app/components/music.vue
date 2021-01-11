@@ -31,6 +31,8 @@ export default {
         this.timer && clearTimeout(this.timer)
         this.timer = null
         this.player.list.hide()
+      } else {
+        this.startTimer()
       }
     }
   },
@@ -84,7 +86,7 @@ export default {
       this.player.on('playing', e => {
         this.$emit('playing')
       })
-      this.player.on('paused', e => {
+      this.player.on('pause', e => {
         this.$emit('paused')
       })
     },
@@ -122,6 +124,12 @@ export default {
     transition: all .2s;
     overflow: hidden;
     height: 0;
+    .aplayer {
+      .aplayer-list ol li {
+        z-index: 9999;
+        background: #fff;
+      }
+    }
     .aplayer-author {
       display: none;
     }
