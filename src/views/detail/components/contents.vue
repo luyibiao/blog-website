@@ -126,6 +126,9 @@ export default {
     this.s = new Popper(this.$refs.shareInner.$el, this.$refs.share, this.options)
     console.log(this.s)
   },
+  beforeDestroy() {
+    this.s.destroy()
+  },
   methods: {
     onShare() {
       this.isShareShow = !this.isShareShow

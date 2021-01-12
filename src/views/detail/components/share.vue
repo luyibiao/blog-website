@@ -29,7 +29,6 @@ export default {
   },
   created() {
     const href = window.location.href.replace('/article-detail', '/mobile-detail')
-    console.log(href)
     QRCode.toDataURL(`${href}`, {
       width: 80,
       height: 60,
@@ -45,6 +44,7 @@ export default {
       console.error(err)
     })
   },
+  
 }
 </script>
 
