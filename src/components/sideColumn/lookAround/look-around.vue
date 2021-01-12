@@ -100,12 +100,14 @@ export default {
         }
       }
       .look-around_item-inner {
+        flex: 1;
         // display: flex;
         // flex-direction: column;
         // justify-content: space-between;
         .title {
           font-size: 15px;
           margin-bottom: 20px;
+          @include ellipsis-multi(1);
         }
         .date {
           font-size: 12px;

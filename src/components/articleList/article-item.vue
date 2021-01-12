@@ -9,7 +9,7 @@
           <slot name="title">{{item.title}}</slot>
         </p>
         <div class="article-item_content-imgs" v-if="imgs && imgs.length">
-          <span v-html="i" v-for="(i, c) in imgs" :key="c"></span>
+          <span v-html="i" v-for="(i, c) in imgs" :key="c" class="article-item_content-imgs-span"></span>
           <!-- <img :src="require(`@/assets/imgs/a-test${index + 1}.png`)" v-for="(item, index) in 2" :key="index"/> -->
         </div>
 
@@ -77,7 +77,7 @@ export default {
   },
   methods: {
     getImgs() {
-      var str = this.item.content
+      var str = decodeURIComponent(this.item.content)
       var imgReg = /<img.*?(?:>|\/>)/gi;
       var srcReg = /src=[\'\"]?([^\'\"]*)[\'\"]?/i;
       var arr = str.match(imgReg) || [];  // arr 为包含所有img标签的数组
@@ -117,7 +117,7 @@ export default {
         width: 180px;
         max-height: 135px;
       }
-      img + img {
+      .article-item_content-imgs-span + .article-item_content-imgs-span {
         margin-left: 8px;
       }
     }

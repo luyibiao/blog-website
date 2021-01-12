@@ -43,6 +43,7 @@ export default {
   methods: {
     getDetail() {
       this.$api.queryArticleDetail({id: this.query.id}).then(res => {
+        res.content = decodeURIComponent(res.content)
         this.detail = res
         this.$store.commit('setCurrentTitle', this.$vueFilters.formatStatus(this.detail.type, this.getArticleType))
         this.$store.commit('setPareneCode', res.type)
