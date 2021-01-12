@@ -18,5 +18,7 @@ export default {
   // 我的信息
   mineInfo: {},
   // 当前播放歌曲信息
-  currentMusicInfo: {}
+  currentMusicInfo: {},
+  // 当前设备
+  detectDeviceType: ''
 }

@@ -16,5 +16,8 @@ export default {
   },
   setCurrentMusicInfo(state, val) {
     state.currentMusicInfo = val
+  },
+  setDetectDeviceType(state, val) {
+    state.detectDeviceType = val
   }
 }

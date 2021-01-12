@@ -211,7 +211,7 @@ export default {
         position: absolute;
         bottom: 0;
         left: 0;
-        right: 40px;
+        right: 0px;
         background: #e7e7e7;
         // width: 100%;
         height: 1px;

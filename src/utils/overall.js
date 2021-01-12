@@ -74,5 +74,10 @@ export default {
     if (!val) return ''
     if (val.length === 1) return val
     return val.split('')[0]
-  }
+  },
+  
+  // 检测移动/PC设备
+  detectDeviceType : _ => /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+                                  ? 'Mobile'
+                                  : 'Pc'
 }

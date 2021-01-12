@@ -4,5 +4,6 @@ export default {
   getArticleType: state => state.articleType,
   getPareneCode: state => state.pareneCode,
   getMineInfo: state => state.mineInfo,
-  getCurrentMusicInfo: state => state.currentMusicInfo
+  getCurrentMusicInfo: state => state.currentMusicInfo,
+  getDetectDeviceType: state => state.detectDeviceType
 }
