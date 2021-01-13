@@ -19,7 +19,7 @@
         <!--专题-->
         <div class="article-item_content_info-item">
           <span>
-            <b-icon name="blog-riqi" size="15px" class="article-item_content_info-icon"/>
+            <b-icon name="blog-lanmu" size="15px" class="article-item_content_info-icon"/>
           </span>
           <span class="info-item-_inner">
             {{getType() || typeName}}
@@ -47,10 +47,10 @@
       <div v-html="detail.content" class="ql-editor"></div>
       <!--打赏和点赞-->
       <div class="reward">
-        <div class="reward-like">
+        <!-- <div class="reward-like">
           <b-icon name="blog-xihuan2" size="18px" class="like-icon"/>
           <span class="reward-inner">赞({{detail.thumbs_num}})</span>
-        </div>
+        </div> -->
         <div class="reward-r" ref="share" @click="onShare">
           <b-icon name="blog-fenxiang1" size="18px"/>
           <span class="reward-inner"></span>

@@ -81,6 +81,11 @@ export default {
       var imgReg = /<img.*?(?:>|\/>)/gi;
       var srcReg = /src=[\'\"]?([^\'\"]*)[\'\"]?/i;
       var arr = str.match(imgReg) || [];  // arr 为包含所有img标签的数组
+      if (this.item.logo) {
+        arr.unshift(
+          `<img src=${this.item.logo} />`
+        )
+      }
       if (arr.length <= 5) {
         this.imgs = arr
       } else {
@@ -114,8 +119,8 @@ export default {
     }
     .article-item_content-imgs {
       img {
-        width: 180px;
-        max-height: 135px;
+        width: 120px;
+        height: 89px;
       }
       .article-item_content-imgs-span + .article-item_content-imgs-span {
         margin-left: 8px;
