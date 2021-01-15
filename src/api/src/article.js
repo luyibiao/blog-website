@@ -32,5 +32,9 @@ export default {
   // 查询下一条
   queryNextArticle(data) {
     return axios.post('/article/queryNextArticle', data)
+  },
+  // 根据父级栏目查询分类栏目
+  querySecondTypeCount(data) {
+    return axios.post('/article/querySecondTypeCount', data)
   }
 }
