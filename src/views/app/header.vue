@@ -1,5 +1,5 @@
 <template>
-  <div class="home-header">
+  <div class="home-header" id="home-header">
     <div class="blog-app_home-logo">
      <div>
        <img src="~@/assets/imgs/logo.png" alt="" class="blog-app_home-logo-inner"/>
@@ -22,7 +22,7 @@
      </div>
    </div>
 
-    <div class="home-header_nav">
+    <div class="home-header_nav" :class="navClasses">
       <div class="home-header_nav-wraper">
         <div 
         class="home-header_nav-item"
@@ -50,17 +50,34 @@ export default {
   data() {
     return {
       showMusic: false,
-      isplays: false
+      isplays: false,
+      isFloat: false
     }
   },
   computed: {
-    ...mapGetters(['getArticleType', 'getPareneCode', 'getMineInfo'])
+    ...mapGetters(['getArticleType', 'getPareneCode', 'getMineInfo']),
+    navClasses() {
+      return [
+        this.isFloat && 'is-float-nav'
+      ]
+    }
   },
   watch: {
-
   },
   created() {
     
+  },
+  mounted() {
+    const ele = document.getElementById('app')
+    const _this = this
+    const height = document.getElementById('home-header').offsetHeight
+    ele.addEventListener('scroll', function(e) {
+      if (e.target.scrollTop > height) {
+        _this.isFloat = true
+      } else {
+        _this.isFloat = false
+      }
+    })
   },
   methods: {
     go(v) {
@@ -109,7 +126,7 @@ export default {
     padding: 25px 0;
     .blog-app_home-logo-inner {
       display: block;
-      width: 320px;
+      width: 230px;
     }
     .blog-app_home-logo-text {
       // margin: 20px 0 0 0px;
@@ -178,7 +195,7 @@ export default {
       display: flex;
       .home-header_nav-item {
         position: relative;
-        padding: 20px 15px;
+        padding: 15px 15px;
         box-sizing: border-box;
         cursor: pointer;
         color: #fff;
@@ -195,6 +212,31 @@ export default {
         }
       }
     }
+    &.is-float-nav {
+      position: fixed;
+      top: 0;
+      left: 5px;
+      right: 5px;
+      z-index: 9999;
+    }
   }
+}
+
+@media only screen and (max-width: 1500px) {
+    .blog-app_home-logo, .home-header_nav-wraper {
+      width: 1100px  !important;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .blog-app_home-logo, .home-header_nav-wraper {
+      width: 1000px  !important;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .blog-app_home-logo, .home-header_nav-wraper {
+      width: 800px  !important;
+    }
 }
 </style>

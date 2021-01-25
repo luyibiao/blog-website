@@ -52,7 +52,10 @@ export default {
       }]
     }
   },
- 
+
+  mounted() {
+    
+  },
   methods: {
     styles(item) {
       return {

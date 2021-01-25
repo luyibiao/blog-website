@@ -27,6 +27,7 @@ export default {
   created() {
     this.detectDeviceType()
   },
+  mounted() {},
   computed: {
     myRouterClasses() {
       return [
@@ -53,12 +54,15 @@ export default {
 
 <style lang="scss">
 .blog-app_home {
-  min-height: 100%;
-  
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   .my-router {
     width: 1200px;
     margin: 10px auto 0;
     padding-bottom: 120px;
+    flex: 1;
+    // overflow: auto;
     &.is-Mobile-Router {
       width: 100%;
       margin-top: 0;
@@ -68,5 +72,22 @@ export default {
       width: 100%;
     }
   }
+}
+
+@media only screen and (max-width: 1500px) {
+    .my-router {
+      width: 1100px  !important;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .my-router {
+      width: 1000px  !important;
+    }
+}
+@media only screen and (max-width: 1000px) {
+    .my-router {
+      width: 800px  !important;
+    }
 }
 </style>

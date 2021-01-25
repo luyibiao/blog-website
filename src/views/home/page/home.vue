@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <layout-wrap>
+    <layout-wrap class="home-blog-wrap-content">
       <template>
         <div class="home-wrap">
           <b-swiper>
@@ -31,7 +31,7 @@
 
     <!--推荐-->
     <transition appear name="home-recommend">
-      <recommend-list style="margin-top: 25px;" v-if="recommendList.length">
+      <recommend-list style="margin-top: 15px;" v-if="recommendList.length">
         <recommend-item 
         v-for="(item, index) in recommendList" 
         :key="index" 
@@ -110,9 +110,12 @@ export default {
 
 <style lang="scss">
 .home {
+  .home-blog-wrap-content {
+    margin-top: 8px;
+  }
   .home-wrap {
     .swiper-container {
-      height: 420px;
+      height: 350px;
     }
     .home-wrap-swiper {
       position: relative;

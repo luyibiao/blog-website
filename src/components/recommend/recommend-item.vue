@@ -48,7 +48,7 @@ export default {
 .recommend-item {
   position: relative;
   flex: 1;
-  height: 220px;
+  height: 180px;
   max-width: 33.3333%;
   cursor: pointer;
  
@@ -67,6 +67,6 @@ export default {
   }
 }
 .recommend-item + .recommend-item {
-  margin-left: 30px;
+  margin-left: 8px;
 }
 </style>

@@ -52,6 +52,9 @@ export default {
   },
   mounted() {
     document.getElementsByTagName('body')[0].appendChild(this.$refs.particles)
+    window.addEventListener('scroll', function() {
+      console.log(565656  )
+    })
   },
 }
 </script>
@@ -61,15 +64,22 @@ export default {
 @import '~@/assets/scss/mixin.scss';
 @import '~@/assets/scss/base.scss';
 
+html {
+  overflow: hidden;
+}
+html, body {
+  height: 100%;
+  // overflow-y: auto;
+}
 #app{
   position: relative;
   // background: $main-white;
   padding: 0 5px;
   box-sizing: border-box;
-  min-height: 100%;
   margin: 0 auto;
   height: 100%;
   color: $main-black;
+  overflow-y: auto;
   // background: rgba($color: $main-white, $alpha: .5);
   .app-home {
   

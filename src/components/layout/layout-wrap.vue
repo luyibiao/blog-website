@@ -39,7 +39,7 @@ export default {
   }
   .blog-layout-wrap_right {
     flex: 1;
-    margin-left: 25px;
+    margin-left: 16px;
     overflow: hidden;
   }
   &.no-sideColumn {
