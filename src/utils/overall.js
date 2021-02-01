@@ -61,12 +61,19 @@ export default {
       prevUrl: prevUrl ? prevUrl : code ? window.$vue.$route.path + '?code=' + code : window.$vue.$route.path ,
       currentTitle: item.title
     })
-    window.$vue.$router.push({
+    let routeUrl = window.$vue.$router.resolve({
       name: 'article-detail',
       query: {
         id: item.id
       }
-    })
+    });
+    window.open(routeUrl.href, '_blank');
+    // window.$vue.$router.push({
+    //   name: 'article-detail',
+    //   query: {
+    //     id: item.id
+    //   }
+    // })
   },
 
   // 分割名字第一个字符串

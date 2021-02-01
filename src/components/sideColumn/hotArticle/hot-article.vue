@@ -72,7 +72,7 @@ export default {
   border-top: 2px solid $main-black;
   box-shadow: 0 2px 5px 0 rgba(146,146,146,.1);
   overflow: hidden;
-  height: 350px;
+  height: 380px;
   display: flex;
   flex-direction: column;
   background: #fff;

@@ -12,7 +12,7 @@ import VueParticles from 'vue-particles'
 import api from '@/api'
 import vueFilters from '@/filters/filters.js'
 
-import { Message, Loading, Dialog, Input, Pagination, Tree } from 'element-ui';
+import { Message, Loading, Dialog, Input, Pagination, Tree, Carousel, CarouselItem } from 'element-ui';
 
 import 'quill/dist/quill.core.css';
 import 'quill/dist/quill.snow.css';
@@ -34,6 +34,8 @@ Vue.use(Dialog);
 Vue.use(Input);
 Vue.use(Pagination)
 Vue.use(Tree)
+Vue.use(Carousel);
+Vue.use(CarouselItem);
 
 Vue.prototype.$loading = Loading.service;
 Vue.prototype.$message = Message

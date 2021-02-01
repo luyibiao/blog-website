@@ -51,21 +51,26 @@ export default {
     return {
       showMusic: false,
       isplays: false,
-      isFloat: false
+      isFloat: false,
+      noRouteList: ['article-detail'],
+      currentName: ''
     }
   },
   computed: {
     ...mapGetters(['getArticleType', 'getPareneCode', 'getMineInfo']),
     navClasses() {
       return [
-        this.isFloat && 'is-float-nav'
+        this.isFloat && !this.noRouteList.includes(this.currentName) && 'is-float-nav'
       ]
     }
   },
   watch: {
+    '$route'(v) {
+      this.currentName = v.name
+    }
   },
   created() {
-    
+    this.currentName = this.$route.name
   },
   mounted() {
     const ele = document.getElementById('app')

@@ -231,10 +231,18 @@ export default {
     }
 
     .content_inner {
-      padding: 35px 0 0;
+      padding: 20px 0 0;
       .ql-editor {
+        line-height: 2;
+        letter-spacing: 1px;
+        font-size: 16px;
+        color: #636b6f;
         img {
           max-width: 100%;
+        }
+        .ql-indent-1:not(.ql-direction-rtl) {
+          padding-left: 0;
+          text-indent: 2em;
         }
       }
       .reward {

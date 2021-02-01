@@ -3,10 +3,10 @@
     <layout-wrap class="home-blog-wrap-content">
       <template>
         <div class="home-wrap">
-          <b-swiper>
-            <b-swiper-item v-for="(item, index) in bannerList" :key="index" @click.native="toRoute(item)">
-              <div class="home-wrap-swiper">
-                <img :src="item.imgUrl" alt="" style="width: 100%"/>
+          <el-carousel height="380px">
+            <el-carousel-item v-for="(item, index) in bannerList"  :key="index" @click.native="toRoute(item)">
+               <div class="home-wrap-swiper">
+                <img :src="item.imgUrl" alt="" style="width: 100%;height: 100%;"/>
                 <!--本地文章跳转显示标题标签-->
                 <template v-if="item.type == 1">
                   <div class="home-wrap-swiper_info">
@@ -18,8 +18,13 @@
                   </div>
                 </template>
               </div>
+            </el-carousel-item>
+          </el-carousel>
+          <!-- <b-swiper>
+            <b-swiper-item v-for="(item, index) in bannerList" :key="index" @click.native="toRoute(item)">
+             
             </b-swiper-item>
-          </b-swiper>
+          </b-swiper> -->
         </div>
       </template>
       
@@ -115,7 +120,10 @@ export default {
   }
   .home-wrap {
     .swiper-container {
-      height: 350px;
+      height: 380px;
+    }
+    .el-carousel__item {
+      cursor: pointer;
     }
     .home-wrap-swiper {
       position: relative;

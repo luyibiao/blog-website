@@ -47,7 +47,9 @@ export default {
         this.detail = res
         this.$store.commit('setCurrentTitle', this.$vueFilters.formatStatus(this.detail.type, this.getArticleType))
         this.$store.commit('setPareneCode', res.type)
-        
+        this.$overall.setBreadcrumb({
+          currentTitle: this.detail.title
+        })
       })
     },
     setWatchNum() {
