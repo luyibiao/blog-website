@@ -1,10 +1,12 @@
 <template>
-  <div class="breadcrumbbasis">
-    <breadcrumb>
-      <breadcrumb-item :to="getBreadcrumbInfo.prevUrl">{{getBreadcrumbInfo.prevTitle}}</breadcrumb-item>
-      <breadcrumb-item>{{getBreadcrumbInfo.currentTitle || title}}</breadcrumb-item>
-    </breadcrumb>
-  </div>
+  <transition name="blog-fadein" appear>
+    <div class="breadcrumbbasis">
+      <breadcrumb>
+        <breadcrumb-item :to="getBreadcrumbInfo.prevUrl">{{getBreadcrumbInfo.prevTitle}}</breadcrumb-item>
+        <breadcrumb-item>{{getBreadcrumbInfo.currentTitle || title}}</breadcrumb-item>
+      </breadcrumb>
+    </div>
+  </transition>
 </template>
 
 <script>

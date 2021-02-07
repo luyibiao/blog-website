@@ -1,6 +1,6 @@
 <!--关于我-->
 <template>
-  <div class="components-aboutme">
+  <div class="components-aboutme is-silde-start" :class="classes">
     <column-title>关于我</column-title>
     <div class="components-aboutme_content">
       <div class="bg">
@@ -27,17 +27,37 @@ export default {
   data() {
     return {
       info: {},
-      isRequest: false
+      isRequest: false,
+      isExit: false,
+      isShow: false
     }
   },
   computed: {
-    ...mapGetters(['getMineInfo'])
+    ...mapGetters(['getMineInfo']),
+    classes() {
+      return [
+        this.isShow && 'is-sildeshow-active'
+      ]
+    }
   },
   created() {
     
   },
+  mounted() {
+    const ele = document.getElementById('app')
+    const _this = this
+    ele.addEventListener('scroll', function(e) {
+      _this.checkEl()
+    })
+    this.checkEl()
+  },
   methods: {
-    
+    checkEl() {
+      if (!this.isExit && this.$overall.elementIsVisibleInViewport(this.$el, true)) {
+        this.isExit = true
+        this.isShow = true
+      }
+    }
   },
 }
 </script>
@@ -48,6 +68,7 @@ export default {
   margin-bottom: 20px;
   padding: $fs-30 $fs-20x;
   box-sizing: border-box;
+  box-shadow: 0 5px 8px 0 #07111b1a;
   .components-aboutme_content {
     margin-top: 20px;
     .bg {

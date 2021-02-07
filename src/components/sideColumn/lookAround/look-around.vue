@@ -1,31 +1,33 @@
 <!--随便看看-->
 <template>
-  <div class="look-around">
-    <column-title>随便看看</column-title>
-    <div class="look-around_wrap">
-      <div class="look-around_wrap-top" @click="go(instance)">
-        <img-mask :src="instance.logo || defaultImg">
-          <template #inner>
-            <div class="look-around_wrap-top_inner">
-              <div class="date">{{instance.create_time | formatDatetime('yyyy-MM-dd')}}</div>
-              <div class="title">{{instance.title}}</div>
+  <transition name="blog-fadein" appear>
+    <div class="look-around">
+      <column-title>随便看看</column-title>
+      <div class="look-around_wrap">
+        <div class="look-around_wrap-top" @click="go(instance)">
+          <img-mask :src="instance.logo || defaultImg">
+            <template #inner>
+              <div class="look-around_wrap-top_inner">
+                <div class="date">{{instance.create_time | formatDatetime('yyyy-MM-dd')}}</div>
+                <div class="title">{{instance.title}}</div>
+              </div>
+            </template>
+          </img-mask>
+        </div>
+        <div class="look-around_list">
+          <div class="look-around_item" v-for="(item, index) in list" :key="index" @click="go(item)">
+            <div class="look-around_item_img">
+              <img :src="item.logo || defaultImg"/>
             </div>
-          </template>
-        </img-mask>
-      </div>
-      <div class="look-around_list">
-        <div class="look-around_item" v-for="(item, index) in list" :key="index" @click="go(item)">
-          <div class="look-around_item_img">
-            <img :src="item.logo || defaultImg"/>
-          </div>
-          <div class="look-around_item-inner">
-            <p class="title">{{item.title}}</p>
-            <p class="date">{{item.create_time | formatDatetime('yyyy-MM-dd')}}</p>
+            <div class="look-around_item-inner">
+              <p class="title">{{item.title}}</p>
+              <p class="date">{{item.create_time | formatDatetime('yyyy-MM-dd')}}</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -67,6 +69,7 @@ export default {
   padding: $fs-30 $fs-20x;
   box-sizing: border-box;
   margin-bottom: 20px;
+  box-shadow: 0 5px 8px 0 #07111b1a;
   .look-around_wrap {
     margin-top: 30px;
     .look-around_wrap-top {

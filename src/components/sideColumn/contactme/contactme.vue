@@ -1,6 +1,6 @@
 <!--关注我-->
 <template>
-  <div class="components-contactme">
+  <div class="components-contactme is-silde-start" :class="classes">
     <column-title>关注我 ~~</column-title>
     <div class="components-contactme_list">
       <div class="components-contactme_item" 
@@ -49,12 +49,26 @@ export default {
         value: '我帅到当壁纸',
         icon: 'blog-wangzhe',
         color: '#FFC125',
-      }]
+      }],
+      isExit: false,
+      isShow: false
     }
   },
 
+  computed: {
+    classes() {
+      return [
+        this.isShow && 'is-sildeshow-active'
+      ]
+    }
+  },
   mounted() {
-    
+    const ele = document.getElementById('app')
+    const _this = this
+    ele.addEventListener('scroll', function(e) {
+      _this.checkEl()
+    })
+    this.checkEl()
   },
   methods: {
     styles(item) {
@@ -67,6 +81,12 @@ export default {
         backgroundColor: item.color
       }
     },
+    checkEl() {
+      if (!this.isExit && this.$overall.elementIsVisibleInViewport(this.$el, true)) {
+        this.isExit = true
+        this.isShow = true
+      }
+    }
   },
 }
 </script>
@@ -78,6 +98,7 @@ export default {
   margin-top: 20px;
   padding: $fs-30 $fs-20x;
   box-sizing: border-box;
+  box-shadow: 0 5px 8px 0 #07111b1a;
   .components-contactme_list {
     margin-top: 30px;
     .components-contactme_item {

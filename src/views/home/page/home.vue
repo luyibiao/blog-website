@@ -2,40 +2,47 @@
   <div class="home">
     <layout-wrap class="home-blog-wrap-content">
       <template>
-        <div class="home-wrap">
-          <el-carousel height="380px">
-            <el-carousel-item v-for="(item, index) in bannerList"  :key="index" @click.native="toRoute(item)">
-               <div class="home-wrap-swiper">
-                <img :src="item.imgUrl" alt="" style="width: 100%;height: 100%;"/>
-                <!--本地文章跳转显示标题标签-->
-                <template v-if="item.type == 1">
-                  <div class="home-wrap-swiper_info">
-                    <div>
-                      <labels :label="item.label" customClasses="reset-tags">
-                      </labels>
+        <transition name="blog-fadein" appear>
+          <div class="home-wrap">
+            <el-carousel height="380px">
+              <el-carousel-item v-for="(item, index) in bannerList"  :key="index" @click.native="toRoute(item)">
+                <div class="home-wrap-swiper">
+                  <img :src="item.imgUrl" alt="" style="width: 100%;height: 100%;"/>
+                  <!--本地文章跳转显示标题标签-->
+                  <template v-if="item.type == 1">
+                    <div class="home-wrap-swiper_info">
+                      <div>
+                        <labels :label="item.label" customClasses="reset-tags">
+                        </labels>
+                      </div>
+                      <h2 class="title">{{item.article_title}}</h2>
                     </div>
-                    <h2 class="title">{{item.article_title}}</h2>
-                  </div>
-                </template>
-              </div>
-            </el-carousel-item>
-          </el-carousel>
-          <!-- <b-swiper>
-            <b-swiper-item v-for="(item, index) in bannerList" :key="index" @click.native="toRoute(item)">
-             
-            </b-swiper-item>
-          </b-swiper> -->
-        </div>
+                  </template>
+                </div>
+              </el-carousel-item>
+            </el-carousel>
+          
+          </div>
+        </transition>
       </template>
       
       <template #right>
-        <hot-article />
+        <div>
+          <transition name="blog-fadein" appear>
+            <el-carousel height="380px" direction="vertical" :interval="5000">
+              <el-carousel-item v-for="(item, index) in silderList"  :key="index" >
+                <component :is="item"></component>
+              </el-carousel-item>
+            </el-carousel>
+          </transition>
+        </div>
+        <!-- <hot-article /> -->
       </template>
     </layout-wrap>
 
 
     <!--推荐-->
-    <transition appear name="home-recommend">
+    <!-- <transition appear name="home-recommend">
       <recommend-list style="margin-top: 15px;" v-if="recommendList.length">
         <recommend-item 
         v-for="(item, index) in recommendList" 
@@ -44,7 +51,7 @@
         >
         </recommend-item>
       </recommend-list>
-    </transition>
+    </transition> -->
 
     <layout-wrap class="home-content">
       <template>
@@ -65,7 +72,7 @@
 export default {
   data() {
     return {
-      
+      silderList: ['hot-article', 'recommend-hoticle'],
       columnList: [],
       arr: [
         'primary',
@@ -83,7 +90,7 @@ export default {
     this.$store.commit('setPareneCode', 'HOME')
     this.$store.commit('setCurrentTitle', '首页')
 
-    this.getrRecommendList()
+    
   },
   methods: {
     getBannerList() {

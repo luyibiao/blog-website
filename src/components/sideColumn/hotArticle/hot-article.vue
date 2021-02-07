@@ -1,28 +1,30 @@
 <!--热门文章-->
 <template>
-  <div class="hot-article">
-    <p class="hot-article-title">热门文章</p>
-    <div class="hot-article-list">
-      <div>
-        <b-swiper 
-        :isShowPag="false"
-        :isShowBtn="false"
-        :options="swiperOption">
-          <b-swiper-item v-for="(item, index) in list" :key="index">
-            <img :src="item.logo || defaultImg" alt="" style="width: 100%" />
-          </b-swiper-item>
-        </b-swiper>
-      </div>
+  <transition name="blog-fadein" appear>
+    <div class="hot-article">
+      <p class="hot-article-title">热门文章</p>
+      <div class="hot-article-list">
+        <div>
+          <b-swiper 
+          :isShowPag="false"
+          :isShowBtn="false"
+          :options="swiperOption">
+            <b-swiper-item v-for="(item, index) in list" :key="index">
+              <img :src="item.logo || defaultImg" alt="" style="width: 100%" />
+            </b-swiper-item>
+          </b-swiper>
+        </div>
 
-      <div class="hot-article-info_list">
-        <div class="hot-article-info_item" v-for="(item, index) in list" :key="index" @click="go(item)">
-          <span class="hot-article-info_inner">
-            {{item.title}}
-          </span>
+        <div class="hot-article-info_list">
+          <div class="hot-article-info_item" v-for="(item, index) in list" :key="index" @click="go(item)">
+            <span class="hot-article-info_inner">
+              {{item.title}}
+            </span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -70,12 +72,12 @@ export default {
 .hot-article {
   border: 1px solid $main-white;
   border-top: 2px solid $main-black;
-  box-shadow: 0 2px 5px 0 rgba(146,146,146,.1);
   overflow: hidden;
   height: 380px;
   display: flex;
   flex-direction: column;
   background: #fff;
+  box-shadow: 0 5px 8px 0 #07111b1a;
   // margin-bottom: 20px;
   .hot-article-title {
     text-align: center;

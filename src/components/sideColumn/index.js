@@ -12,6 +12,8 @@ import contactme from './contactme/contactme'
 import hotComments from './hotComments/hot-comments'
 // 文章分类
 import classification from './classification/main'
+// 推荐文章
+import recommendHoticle from './recommend/recommend'
 
 export const componentsList = [
   hotArticle,
@@ -20,7 +22,8 @@ export const componentsList = [
   aboutme,
   contactme,
   hotComments,
-  classification
+  classification,
+  recommendHoticle
 ]
 
 // 公共组件
@@ -44,5 +47,7 @@ export default {
   // 网易云热评
   'HOE-COMMENTS': [hotComments],
   // 文章分类
-  'CLASS-IFICATION': [classification]
+  'CLASS-IFICATION': [classification],
+  // 推荐文章
+  'RECOMMEND-HOTICLE': [recommendHoticle]
 }

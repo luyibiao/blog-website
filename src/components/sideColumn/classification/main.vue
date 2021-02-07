@@ -1,24 +1,26 @@
 <template>
-  <div class="components-classification">
-    <column-title>文章分类</column-title>
-    <div class="components-classification-content">
-      <el-tree
-      :props="props"
-      :load="loadNode"
-      @node-click="nodeClick"
-      :indent="10"
-      accordion 
-      lazy>
-        <div class="custom-tree-node" slot-scope="{ node, data }">
-          <span class="title">
-            <b-icon name="blog-wenzhang" v-if="node.isLeaf" size="16" class="icon"/>{{ node.label }}</span>
-          <span v-if="!node.isLeaf" class="count">
-            {{data.article_total}}篇
-          </span>
-        </div>
-      </el-tree>
+  <transition name="blog-fadein" appear>
+    <div class="components-classification">
+      <column-title>文章分类</column-title>
+      <div class="components-classification-content">
+        <el-tree
+        :props="props"
+        :load="loadNode"
+        @node-click="nodeClick"
+        :indent="10"
+        accordion 
+        lazy>
+          <div class="custom-tree-node" slot-scope="{ node, data }">
+            <span class="title">
+              <b-icon name="blog-wenzhang" v-if="node.isLeaf" size="16" class="icon"/>{{ node.label }}</span>
+            <span v-if="!node.isLeaf" class="count">
+              {{data.article_total}}篇
+            </span>
+          </div>
+        </el-tree>
+      </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -107,6 +109,7 @@ export default {
     margin-bottom: 20px;
     padding: $fs-30 $fs-20x;
     box-sizing: border-box;
+    box-shadow: 0 5px 8px 0 #07111b1a;
     .components-classification-content {
       margin-top: 25px;
       max-height: 450px;

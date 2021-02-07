@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <my-home class="app-home"></my-home>
+    <transition name="blog-fadein" appear>
+      <my-home class="app-home"></my-home>
+    </transition>
     <div class="particles" ref="particles">
       <vue-particles
         color="#dedede"

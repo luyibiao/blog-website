@@ -1,15 +1,17 @@
 <!--网易云热评-->
 <template>
-  <div class="components-hot-comments">
-    <column-title>网易云热评</column-title>
-    <div class="components-hot-comments_content">
-      {{getCurrentMusicInfo.content}}
-      <p class="author">
-        <span class="line"></span>
-        {{getCurrentMusicInfo.name}}
-      </p>
+  <transition name="blog-fadein" appear>
+    <div class="components-hot-comments">
+      <column-title>网易云热评</column-title>
+      <div class="components-hot-comments_content">
+        {{getCurrentMusicInfo.content}}
+        <p class="author">
+          <span class="line"></span>
+          {{getCurrentMusicInfo.name}}
+        </p>
+      </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -28,6 +30,7 @@ export default {
   margin-bottom: 20px;
   padding: $fs-30 $fs-20x;
   box-sizing: border-box;
+  box-shadow: 0 5px 8px 0 #07111b1a;
   .components-hot-comments_content {
     margin-top: 20px;
     line-height: 1.6;

@@ -1,11 +1,16 @@
 <template>
   <div class="home-header" id="home-header">
     <div class="blog-app_home-logo">
-     <div>
+     <div class="blog-app-logo-wrap">
        <img src="~@/assets/imgs/logo.png" alt="" class="blog-app_home-logo-inner"/>
+       <p class="blog-app_home-logo-text">{{getMineInfo.description}}</p>
      </div>
 
-     <p class="blog-app_home-logo-text">{{getMineInfo.description}}</p>
+     <!-- <div>
+       <p>闪电估分的</p>
+       <p>是大法官的看</p>
+     </div> -->
+     <!-- <p class="blog-app_home-logo-text">{{getMineInfo.description}}</p> -->
 
      <div class="home-search_wraper">
        <musics v-model="showMusic" @playing="playing" @paused="paused"/>
@@ -128,18 +133,25 @@ export default {
     justify-content: space-between;
     width: 1200px;
     margin: 0 auto;
-    padding: 25px 0;
+    padding: 15px 0 15px;
+    .blog-app-logo-wrap {
+      position: relative;
+      .blog-app_home-logo-text {
+        // margin: 20px 0 0 0px;
+        // position: absolute;
+        margin-top: 8px;
+        font-size: 16px;
+        font-weight: 500;
+        width: 320px;
+        line-height: 1.5;
+        color:  #748594;
+      }
+    }
     .blog-app_home-logo-inner {
       display: block;
       width: 230px;
     }
-    .blog-app_home-logo-text {
-      // margin: 20px 0 0 0px;
-      font-size: 15px;
-      font-weight: bold;
-      width: 320px;
-      line-height: 1.5;
-    }
+    
     .home-search_wraper {
       display: flex;
       align-items: center;

@@ -114,13 +114,13 @@ export default {
   }
   .article-item_content {
     .article-item_content-title {
-      font-size: 25px;
-      margin-bottom: 30px;
+      font-size: 22px;
+      margin-bottom: 25px;
     }
     .article-item_content-imgs {
       img {
-        width: 120px;
-        height: 89px;
+        width: 100px;
+        height: 70px;
       }
       .article-item_content-imgs-span + .article-item_content-imgs-span {
         margin-left: 8px;

@@ -359,26 +359,21 @@ a:hover {
     border: none !important;
 }
 
-// /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
-// ::-webkit-scrollbar
-// {
-// 	width: 10px;
-// 	height: 16px;
-// 	background-color: #F5F5F5;
-// }
+.blog-fadein {
+    &-enter-active, &-leave-active {
+        transition: all 2s;
+        opacity: 1;
+    }
+    &-enter, &-leave-to {
+        opacity: 0;
+    }
+}
 
-// /*定义滚动条轨道 内阴影+圆角*/
-// ::-webkit-scrollbar-track
-// {
-// 	border-radius: 10px;
-//     background-color: #ec7e30;
-//     background: rgba($color: #ec7e30, $alpha: .2);
-// }
+.is-silde-start {
+    opacity: 0;
+    transition: all 2s;
+}
 
-// /*定义滑块 内阴影+圆角*/
-// ::-webkit-scrollbar-thumb
-// {
-// 	border-radius: 10px;
-// 	// -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-// 	background: rgba($color: #ec7e30, $alpha: .5);
-// }
+.is-sildeshow-active {
+    opacity: 1;
+}
