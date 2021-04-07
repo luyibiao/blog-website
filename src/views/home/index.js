@@ -6,7 +6,7 @@ export default [
     name: 'home',
     component: () => import(/* webpackChunkName: "home" */ './page/home'),
     meta: {
-      title: '首页',
+      title: '九七个人博客',
     }
   }
 ]

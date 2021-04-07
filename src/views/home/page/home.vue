@@ -40,19 +40,6 @@
       </template>
     </layout-wrap>
 
-
-    <!--推荐-->
-    <!-- <transition appear name="home-recommend">
-      <recommend-list style="margin-top: 15px;" v-if="recommendList.length">
-        <recommend-item 
-        v-for="(item, index) in recommendList" 
-        :key="index" 
-        :item="item"
-        >
-        </recommend-item>
-      </recommend-list>
-    </transition> -->
-
     <layout-wrap class="home-content">
       <template>
         <!--文章列表-->

@@ -65,7 +65,7 @@ export default {
       &.components-tags_clickAble {
         
         &:hover {
-          background: map-get($item, fc);
+          background: rgba($color: map-get($item, bg), $alpha: .8);
           color: #fff;
         }
       }

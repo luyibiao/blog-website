@@ -1,15 +1,22 @@
 <template>
   <div class="components-sideColumnAll">
+    <friendLinks />
     <div v-for="(item, index) in columnList" :key="index">
       <component :is="item.name" :item="item"></component>
     </div>
+    
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import friendLinks from '../sideColumn/friendLinks/friendLinks'
+
 export default {
   name: 'sideColumnAll',
+  components: {
+    friendLinks
+  },
   props: {
     noShowList: {
       type: Array,
